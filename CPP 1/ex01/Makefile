@@ -6,7 +6,7 @@ CYAN = @echo "\033[0;36m"
 RESET = "\033[1;0m"
 
 # VARIABLES #
-NAME = karen
+NAME = test
 CC = clang++
 INCLUDE = -std=c++98
 CFLAGS = -Wall -Werror -Wextra
@@ -16,7 +16,7 @@ SRC_PATH    = srcs
 OBJ_PATH    = objects
 
 # SOURCES #
-SRC =   main.cpp Karen.cpp#PhoneBook.class.hpp general.hpp
+SRC =   main.cpp Zombie.cpp zombieHorde.cpp
 
 # RULES #
 all: $(NAME)
