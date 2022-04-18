@@ -16,7 +16,7 @@ SRC_PATH    = srcs
 OBJ_PATH    = objects
 
 # SOURCES #
-SRC =   main.cpp Karen.cpp#PhoneBook.class.hpp general.hpp
+SRC =   main.cpp Karen.cpp
 
 # RULES #
 all: $(NAME)
