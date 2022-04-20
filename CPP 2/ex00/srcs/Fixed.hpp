@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:39:06 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/18 15:25:51 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/19 12:37:10 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ s = sign bit, e = exponent, m = mantissa
 			Fixed(const Fixed &copy);
 			~Fixed();
 			Fixed& operator=(Fixed &fixed);
-			int getRawBits(void);
+			int getRawBits(void) const;
 			void setRawBits(int const raw);
+			
 	};
 	
 
