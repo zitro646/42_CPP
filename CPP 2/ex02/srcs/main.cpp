@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:08:51 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/20 13:49:49 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:01:47 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,84 @@
 
 int main( void ) 
 {
-	Fixed a;
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
-
 	
-	a = Fixed( 1234.4321f );
+	Fixed a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout <<" Raw "<< a.getRawBits() << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
+	return 0;
+	/*Fixed a( 42.42f );
+	Fixed b( 42.42f );
+	Fixed c( 10 );
+	Fixed d( 100 );
 
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-	
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	
+	std::cout << "Empezamos las comparaciones "<< std::endl;
+	std::cout << " a("<< a << ") != b("<< b << ") -> "<< (a!=b) << std::endl;
+	std::cout << " a("<< a << ") != c("<< c << ") -> "<< (a!=c) << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << " a("<< a << ") == b("<< b << ") -> "<< (a==b) << std::endl;
+	std::cout << " a("<< a << ") == c("<< c << ") -> "<< (a==c) << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << " a("<< a << ") > c("<< c << ") -> "<< (a>c) << std::endl;
+	std::cout << " a("<< a << ") > d("<< d << ") -> "<< (a>d) << std::endl;
+	std::cout << " a("<< a << ") > b("<< b << ") -> "<< (a>b) << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << " a("<< a << ") >= c("<< c << ") -> "<< (a>=c) << std::endl;
+	std::cout << " a("<< a << ") >= d("<< d << ") -> "<< (a>=d) << std::endl;
+	std::cout << " a("<< a << ") >= b("<< b << ") -> "<< (a>=b) << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << " a("<< a << ") < c("<< c << ") -> "<< (a<c) << std::endl;
+	std::cout << " a("<< a << ") < d("<< d << ") -> "<< (a<d) << std::endl;
+	std::cout << " a("<< a << ") < b("<< b << ") -> "<< (a<b) << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << " a("<< a << ") <= c("<< c << ") -> "<< (a<=c) << std::endl;
+	std::cout << " a("<< a << ") <= d("<< d << ") -> "<< (a<=d) << std::endl;
+	std::cout << " a("<< a << ") <= b("<< b << ") -> "<< (a<=b) << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << " a("<< a << ") - b("<< b << ") -> "<< (a-b) << std::endl;
+	std::cout << " a("<< a << ") - c("<< c << ") -> "<< (a-c) << std::endl;
+	std::cout << " a("<< a << ") - d("<< d << ") -> "<< (a-d) << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << " a("<< a << ") + b("<< b << ") -> "<< (a+b) << std::endl;
+	std::cout << " a("<< a << ") + c("<< c << ") -> "<< (a+c) << std::endl;
+	std::cout << " a("<< a << ") + d("<< d << ") -> "<< (a+d) << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << " a("<< a << ") * b("<< b << ") -> "<< (a*b) << std::endl;
+	std::cout << " a("<< a << ") * c("<< c << ") -> "<< (a*c) << std::endl;
+	std::cout << " a("<< a << ") * d("<< d << ") -> "<< (a*d) << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << " a("<< a << ") / b("<< b << ") -> "<< (a/b) << std::endl;
+	std::cout << " a("<< a << ") / c("<< c << ") -> "<< (a/c) << std::endl;
+	std::cout << " a("<< a << ") / d("<< d << ") -> "<< (a/d) << std::endl;*/
+	/*std::cout << "__________________________________________"<< std::endl;
+	std::cout << "Pre-decrement " << std::endl;
+	std::cout << "Before a = "<< a << std::endl;
+	std::cout << "--a("<< --a << ")"<< std::endl;
+	std::cout << "After a = "<< a << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << "Post-decrement " << std::endl;
+	std::cout << "Before b = "<< b << std::endl;
+	std::cout << "b--("<< b-- << ")"<< std::endl;
+	std::cout << "After b = "<< b << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << "Pre-increment " << std::endl;
+	std::cout << "Before a = "<< a << std::endl;
+	std::cout << "++a("<< ++a << ")"<< std::endl;
+	std::cout << "After a = "<< a << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
+	std::cout << "Post-increment " << std::endl;
+	std::cout << "Before b = "<< b << std::endl;
+	std::cout << "b++("<< b++ << ")"<< std::endl;
+	std::cout << "After b = "<< b << std::endl;
+	std::cout << "__________________________________________"<< std::endl;*/
 	return 0; 
 }

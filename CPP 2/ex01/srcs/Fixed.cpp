@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 14:28:49 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/20 13:13:28 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/20 14:53:09 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ Fixed::~Fixed()
 	return ;
 }
 
-//Fixed Operator
+//Fixed Operator assign
 Fixed &Fixed::operator=(const Fixed &fixed)
 {
 	std::cout << "Assignation operator called" << std::endl;
@@ -60,7 +60,7 @@ Fixed &Fixed::operator=(const Fixed &fixed)
 	return *this;
 }
 
-//Fixed Operator
+//Fixed Operator output
 std::ostream& operator<<(std::ostream& os, const Fixed &f) //, const Fixed &f
 {
 	os << f.toFloat();

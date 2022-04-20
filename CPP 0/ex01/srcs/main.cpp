@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 12:36:10 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/11 17:33:42 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/20 16:13:57 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main (void)
 	PhoneBook	libro;
 	int			i;
 	int			t_max;
-	string		input;
+	std::string		input;
 	
 	i = 0;
 	t_max = 0;

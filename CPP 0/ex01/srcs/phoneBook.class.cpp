@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 13:54:11 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/11 17:35:24 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/20 16:14:53 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ PhoneBook::~PhoneBook(void)
 //Functions
 void PhoneBook::addContact(int pos)
 {
-	string	input;
+	std::string	input;
 
 	std::cout<<"Insert first name : ";
 	this->contacts[pos].set_First_name(get_input());
@@ -41,22 +41,12 @@ void PhoneBook::addContact(int pos)
 	std::cout<<"Contact added to the phone book"<<std::endl<<std::endl;
 }
 
-void	PhoneBook::show_data(string str)
+void	PhoneBook::show_data(std::string str)
 {
-	string result;
-
-	result = str;
 	if (str.length() > 10)
-	{
-		result.erase(9, str.length() - 9);
-		result.insert(9, "."); 
-	}
+		std::cout<< std::setw(9) <<str.substr(0, 9)<<".";
 	else
-	{
-		result.insert(0, "         "); 
-		result.erase(0, str.length() - 1);
-	}
-	std::cout<<result;
+		std::cout<< std::setfill (' ')<<std::setw(10)<<str.substr(0, 9);
 }
 
 void	PhoneBook::showContact(int pos)
@@ -71,7 +61,7 @@ void	PhoneBook::showContact(int pos)
 	this->show_data(this->contacts[pos].get_Nickname());
 	std::cout<<"|";
 	this->show_data(this->contacts[pos].get_Phone());
-	std::cout<<"|"<<endl;
+	std::cout<<"|"<<std::endl;
 }
 
 void	PhoneBook::showSpecificContact(int pos)
@@ -95,7 +85,7 @@ void	PhoneBook::showSpecificContact(int pos)
 void	PhoneBook::searchContact(int tam)
 {
 	int i;
-	string input;
+	std::string input;
 
 	i = 0;
 	if (tam != 0)
@@ -110,7 +100,7 @@ void	PhoneBook::searchContact(int tam)
 		}
 		std::cout<<"__________________________________________________"<<std::endl;
 		std::cout<<std::endl<<"Select a number from 1 to "<<tam <<std::endl<<"Index : ";
-		getline(cin, input);
+		getline(std::cin, input);
 		if (valid_number(tam, input))
 			showSpecificContact(((int)input[0]) - 49);
 		else

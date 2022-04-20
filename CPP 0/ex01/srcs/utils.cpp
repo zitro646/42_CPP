@@ -6,22 +6,22 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 19:06:56 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/05 19:08:24 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/20 16:15:52 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"general.hpp"
 
-string get_input(void)
+std::string get_input(void)
 {
-	string	input;
-	getline(cin, input);
+	std::string	input;
+	getline(std::cin, input);
 	if (input.empty())
 		return ("");
 	return (input);
 }
 
-int	valid_number(int current_tam, string str)
+int	valid_number(int current_tam, std::string str)
 {
 	int i;
 	

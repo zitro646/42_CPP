@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 14:23:26 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/05 14:02:26 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/20 16:13:41 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include "general.hpp"
 #include "contact.class.hpp"
-using namespace std;
 
 class PhoneBook
 {
@@ -31,6 +30,6 @@ class PhoneBook
 	void	searchContact(int tam);
 	void	showContact(int pos);
 	void	showSpecificContact(int pos);
-	void	show_data(string str);
+	void	show_data(std::string str);
 };
 #endif
