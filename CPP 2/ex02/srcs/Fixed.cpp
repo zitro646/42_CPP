@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 14:28:49 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/20 20:23:17 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 12:23:07 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ std::ostream& operator<<(std::ostream& os, const Fixed &f) //, const Fixed &f
 //__________________________________________________
 //	Functions to Pre Increase/Decrease Operators	|
 //__________________________________________________
-Fixed Fixed::operator--(void)
+Fixed &Fixed::operator--(void)
 {
 	this->setRawBits(this->getRawBits() - 1);
 	return (*this);
 }
 
-Fixed Fixed::operator++(void)
+Fixed &Fixed::operator++(void)
 {
 	this->setRawBits(this->getRawBits() + 1);
 	return (*this);
@@ -79,19 +79,19 @@ Fixed Fixed::operator++(void)
 //__________________________________________________
 //	Functions to Post Increase/Decrease Operators	|	
 //__________________________________________________
-Fixed &Fixed::operator--(int)
+Fixed Fixed::operator--(int)
 {
-	Fixed p(this->getRawBits());
+	Fixed p(this->toFloat());
 	this->setRawBits(this->getRawBits() - 1);
-	std::cout<<std::endl<< "Dolor "<< p<< std::endl;
+	//std::cout<<std::endl<< "Dolor "<< p<< std::endl;
 	return (*this);
 }
 
-Fixed &Fixed::operator++(int)
+Fixed Fixed::operator++(int)
 {
 	Fixed p(this->toFloat());
 	this->setRawBits(this->getRawBits() + 1);
-	return (*this);
+	return (p);
 }
 
 //__________________________________________________

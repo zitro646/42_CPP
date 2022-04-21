@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:39:06 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/20 20:09:38 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 12:14:43 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@
 			Fixed operator*(const Fixed &fixed2) const;
 			Fixed operator/(const Fixed &fixed2) const;
 			//Pre Increase/Decrease Operators
-			Fixed operator--(void);
-			Fixed operator++(void);
+			Fixed &operator--(void);
+			Fixed &operator++(void);
 
 			//Post Increase/Decrease Operators
-			Fixed &operator--(int);
-			Fixed &operator++(int);
+			Fixed operator--(int);
+			Fixed operator++(int);
 	};
 	
 	

@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:08:51 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/20 20:01:47 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/21 12:23:22 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int main( void )
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;
-	std::cout <<" Raw "<< a.getRawBits() << std::endl;
 	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;

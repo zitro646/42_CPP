@@ -9,14 +9,14 @@ RESET = "\033[1;0m"
 NAME = test
 CC = clang++
 INCLUDE = -std=c++98
-CFLAGS = -Wall -Werror -Wextra #-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra
 
 # PATHs #
 SRC_PATH    = srcs
 OBJ_PATH    = objects
 
 # SOURCES #
-SRC =   main.cpp Fixed.cpp
+SRC =  main.cpp ClapTrap.cpp
 
 # RULES #
 all: $(NAME)
