@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 16:21:05 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/21 16:26:27 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/04/21 14:36:54 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/04/22 16:55:25 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIAMONDTRAP_H
-# define DIAMONDTRAP_H
+#ifndef SCAVTRAP_H
+# define SCAVTRAP_H
 
+#include<iostream>
+#include<iomanip>
+#include<string>
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
-class DiamondTrap : public ClapTrap, public ScavTrap
+class ScavTrap : virtual public ClapTrap
 {
 	public:
-		DiamondTrap();
-		DiamondTrap(std::string str);
-		~DiamondTrap();
-		DiamondTrap& operator=(DiamondTrap const & clap);
+		ScavTrap();
+		ScavTrap(std::string str);
+		virtual ~ScavTrap();
+		ScavTrap& operator=(ScavTrap const & clap);
+		void  guardGate(void);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:08:51 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/22 12:33:40 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/22 17:47:50 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,32 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 //clang++ main.cpp ClapTrap.cpp
 
 int main (void)
 {
+	/*
 	std::cout << "______________________________"<< std::endl;
 	ClapTrap a("Pepe");
 	
-	a.attack("Juan");
+	a.attack("Objetivo de A");
 	a.takeDamage(3);
 	a.beRepaired(3);
 	std::cout << "______________________________"<< std::endl;
 	ScavTrap b("Pedro");
 	b.guardGate();
-	b.attack("Juan");
+	b.attack("Objetivo de B");
 	std::cout << "______________________________"<< std::endl;
 	FragTrap c("Paco");
 	c.highFivesGuys();
-	c.attack("Juan");
+	c.attack("Objetivo de C");*/
+	std::cout << "______________________________"<< std::endl;
+	DiamondTrap d("test");
+	std::cout << "______________________________"<< std::endl;
+	d.highFivesGuys();
+	d.guardGate();
+	d.attack("Objetivo de D");
 	std::cout << "______________________________"<< std::endl;
 	return (0);
 }

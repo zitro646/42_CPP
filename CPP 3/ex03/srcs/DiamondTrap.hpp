@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/21 16:27:24 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/21 16:33:43 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/04/21 16:21:05 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/04/22 17:25:45 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+#ifndef DIAMONDTRAP_H
+# define DIAMONDTRAP_H
 
-DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap()
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
+
+class DiamondTrap : public FragTrap, public ScavTrap
 {
-	std::cout << "DiamondTrap " << this->name <<" arrives to the party "<<std::endl;
-	this->hp = 100;
-	this->energy_points = 50;
-	this->atack_dmg = 20;
-	return;
-}
+	public:
+		DiamondTrap();
+		DiamondTrap(std::string str);
+		~DiamondTrap();
+		DiamondTrap& operator=(DiamondTrap const & clap);
+		using ScavTrap::attack;
+		//void attack(std::string const & target);
+	private:
+		std::string name;
+};
 
-DiamondTrap::DiamondTrap(std::string str)
-{
-
-}
-
-DiamondTrap::~DiamondTrap()
-{
-
-}
-
-DiamondTrap& DiamondTrap::operator=(DiamondTrap const & clap)
-{
-
-}
+#endif
