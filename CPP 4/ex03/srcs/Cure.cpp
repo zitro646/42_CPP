@@ -1,48 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 13:41:34 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/26 16:04:15 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/04/26 13:04:35 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/04/26 17:00:47 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#include "Cure.hpp"
 
-Brain::Brain()
+Cure::Cure() : AMateria("cure")
 {
-	std::cout<<"Brain created"<<std::endl; 
 	return;
 }
 
-Brain::~Brain()
+Cure::Cure(Cure const & materia)
 {
-	std::cout<<"Brain destroyed"<<std::endl;
+	*this = materia;
 	return;
 }
 
-Brain::Brain(const Brain &brain)
+Cure& Cure::operator=(const Cure &amateria)
 {
-	*this = brain;
-}
-
-Brain& Brain::operator=(Brain const & brain)
-{
-	int i;
-
-	i = 0;
-	while (i < 100)
-	{
-		this->ideas[i] = brain.ideas[i];
-		i++;
-	}
+	this->type = amateria.getType();
 	return (*this);
 }
 
-std::string Brain::getIdea(int index)
+AMateria* Cure::clone() const
 {
-	return("test");
+	return (new Cure(*this));
+}
+
+void Cure::use(ICharacter& target)
+{
+	std::cout<< "heals "<< target.getName()<< " wounds"<< std::endl;
 }

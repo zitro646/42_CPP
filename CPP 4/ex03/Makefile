@@ -16,7 +16,7 @@ SRC_PATH    = srcs
 OBJ_PATH    = objects
 
 # SOURCES #
-SRC =  main.cpp Animal.cpp Cat.cpp Dog.cpp WrongCat.cpp Brain.cpp
+SRC =  main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp
 
 # RULES #
 all: $(NAME)

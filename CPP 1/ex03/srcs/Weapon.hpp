@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:12:50 by root              #+#    #+#             */
-/*   Updated: 2022/04/08 17:05:20 by root             ###   ########.fr       */
+/*   Updated: 2022/04/26 17:05:49 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Weapon{
         Weapon (void);
         Weapon (std::string str);
         ~Weapon (void);
-        std::string getType(void);
+        const std::string getType(void);
         void setType(std::string str);
 };
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 12:51:18 by root              #+#    #+#             */
-/*   Updated: 2022/04/08 13:16:07 by root             ###   ########.fr       */
+/*   Updated: 2022/04/26 13:40:09 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ Zombie* zombieHorde(int nbr, std::string str)
 
     i = 0;
     while (i != nbr)
-        z[i++].setZombiename(str);
+    {
+        z[i].setZombiename(str + std::to_string(i + 1));
+        i++;
+    }
     return (z);   
 }

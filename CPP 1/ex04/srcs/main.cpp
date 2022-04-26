@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:47:35 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/11 17:21:50 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:28:32 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@
 std::string	wololostr(std::string str, std::string s1, std::string s2)
 {
 	std::size_t	found;
+	std::string finalstr;
 	
 	found = str.find(s1);
+	finalstr = "";
 	while (found!=std::string::npos)
 	{
-		str.erase(found,s1.length());
-		str.insert(found,s2);
+		finalstr.insert(finalstr.length(), str.substr(0 , found)+s2);
+		str.erase(0,found + s1.length());
 		found = str.find(s1);
 	}
-	return (str);
+	return (finalstr + str);
 }
 
 void	read_file(std::string dir, std::string s1, std::string s2)

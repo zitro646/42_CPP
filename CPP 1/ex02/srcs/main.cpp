@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 13:29:09 by root              #+#    #+#             */
-/*   Updated: 2022/04/08 17:21:32 by root             ###   ########.fr       */
+/*   Updated: 2022/04/26 13:45:38 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ int main(void)
     std::string* strPTR = &str;
     
     str = "HI THIS IS BRAIN";
-    std::cout<<str<<" - "<<strREF<<" - "<<strPTR<<std::endl;
+    std::cout<<"FRASES"<<std::endl;
+    std::cout<<"El valor original               ->"<<str<<std::endl;
+    std::cout<<"El valor al que hace referencia ->"<<strREF<<std::endl;
+    std::cout<<"El valor dentro del puntero     ->"<<*strPTR<<std::endl;
+
+    std::cout<<"PUNTEROS"<<std::endl;
+    std::cout<<"La direccion del valor original ->"<<&str<<std::endl;
+    std::cout<<"La direccion a la referencia    ->"<<&strREF<<std::endl;
+    std::cout<<"El valor del puntero            ->"<<strPTR<<std::endl;
     return (0);
 }

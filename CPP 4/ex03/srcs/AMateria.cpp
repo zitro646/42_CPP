@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 16:57:49 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/25 17:02:30 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:01:36 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,15 @@ AMateria & AMateria::operator=(const AMateria &ama)
 	return (*this);
 }
 
-std::string const & getType() const
+
+std::string const & AMateria::getType(void) const
 {
 	return (this->type);
+}
+
+void AMateria::use(ICharacter& target)
+{
+	std::cout<< "does unspecific magic to "<< target.getName()<< std::endl;
+	return;
 }
 	

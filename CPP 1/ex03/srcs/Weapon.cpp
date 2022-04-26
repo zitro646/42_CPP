@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:16:52 by root              #+#    #+#             */
-/*   Updated: 2022/04/10 13:56:18 by root             ###   ########.fr       */
+/*   Updated: 2022/04/26 17:05:57 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Weapon::~Weapon (void)
     return;
 }
 
-std::string Weapon::getType(void)
+const std::string Weapon::getType(void)
 {
     return(this->type);
 }

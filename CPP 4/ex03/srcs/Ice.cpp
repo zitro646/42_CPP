@@ -1,48 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 13:41:34 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/26 16:04:15 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/04/26 13:04:35 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/04/26 16:59:34 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#include "Ice.hpp"
 
-Brain::Brain()
+Ice::Ice() : AMateria("ice")
 {
-	std::cout<<"Brain created"<<std::endl; 
 	return;
 }
 
-Brain::~Brain()
+Ice::Ice(Ice const & materia)
 {
-	std::cout<<"Brain destroyed"<<std::endl;
+	*this = materia;
 	return;
 }
 
-Brain::Brain(const Brain &brain)
+Ice& Ice::operator=(const Ice &amateria)
 {
-	*this = brain;
-}
-
-Brain& Brain::operator=(Brain const & brain)
-{
-	int i;
-
-	i = 0;
-	while (i < 100)
-	{
-		this->ideas[i] = brain.ideas[i];
-		i++;
-	}
+	this->type = amateria.getType();
 	return (*this);
 }
 
-std::string Brain::getIdea(int index)
+AMateria* Ice::clone() const
 {
-	return("test");
+	return (new Ice(*this));
+}
+
+void Ice::use(ICharacter& target)
+{
+	std::cout<< "* shoots an ice bolt at "<< target.getName()<< std::endl;
 }
