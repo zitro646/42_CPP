@@ -14,12 +14,15 @@
 
 Character::Character() : name("name"), inv_tam(0)
 {
+	for (int i = 0; i < 4 ; i++)
+		this->inventory[i] = NULL;
 	return;
 }
 
 Character::Character(std::string str) : name(str), inv_tam(0)
 {
-	
+	for (int i = 0; i < 4 ; i++)
+		this->inventory[i] = NULL;
 	return;
 }
 
@@ -65,6 +68,7 @@ void Character::unequip(int idx)
 			this->inventory[i] = this->inventory[i + 1];	
 		}
 		this->inv_tam--;
+		this->inventory[3] = NULL;
 	}
 
 }

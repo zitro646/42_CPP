@@ -16,7 +16,7 @@
 
 void leaks(void)
 {
-	system("leaks -q test");
+	//system("leaks -q test");
 }
 
 
@@ -24,9 +24,11 @@ int main (void)
 {
 	AMateria *ice = new Ice();
 	AMateria *heal = new Cure();
-	Character *character = new Character("Juanjo");  
+	Character *character = new Character();  
 	character->equip(ice);
 	character->equip(heal);
 	character->use(0,*character);
+	character->use(1,*character);
+	character->use(2,*character);
 	//delete cat;
 }

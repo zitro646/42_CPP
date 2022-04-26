@@ -18,6 +18,7 @@
 #include "ICharacter.hpp"
 #include<iomanip>
 #include<iostream>
+class ICharacter;
 
 class AMateria
 {

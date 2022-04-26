@@ -18,8 +18,8 @@
 class Character : public ICharacter
 {
 private:
-	int inv_tam;
 	std::string name;
+	int inv_tam;
 	AMateria *inventory[4]; 
 public:
 	Character();
