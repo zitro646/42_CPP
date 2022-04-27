@@ -16,7 +16,7 @@ SRC_PATH    = srcs
 OBJ_PATH    = objects
 
 # SOURCES #
-SRC =  main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp
+SRC =  main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp MateriaSource.cpp
 
 # RULES #
 all: $(NAME)

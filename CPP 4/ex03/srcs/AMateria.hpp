@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 15:46:34 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/26 16:58:12 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/27 12:28:09 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ protected:
 public:
 	AMateria();
 	AMateria(std::string const & str);
-	~AMateria();
+	virtual ~AMateria();
 	AMateria &operator=(const AMateria &amateria);
 	std::string const & getType() const;
 	virtual AMateria* clone() const = 0;

@@ -6,13 +6,13 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:04:35 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/26 17:00:47 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/27 12:29:52 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
-Cure::Cure() : AMateria("cure")
+Cure::Cure(void) : AMateria("cure")
 {
 	return;
 }
@@ -20,6 +20,11 @@ Cure::Cure() : AMateria("cure")
 Cure::Cure(Cure const & materia)
 {
 	*this = materia;
+	return;
+}
+
+Cure::~Cure(void)
+{
 	return;
 }
 

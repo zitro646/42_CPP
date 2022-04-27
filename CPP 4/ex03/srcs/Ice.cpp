@@ -6,13 +6,13 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:04:35 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/26 16:59:34 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/27 12:29:56 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 
-Ice::Ice() : AMateria("ice")
+Ice::Ice(void) : AMateria("ice")
 {
 	return;
 }
@@ -27,6 +27,11 @@ Ice& Ice::operator=(const Ice &amateria)
 {
 	this->type = amateria.getType();
 	return (*this);
+}
+
+Ice::~Ice(void)
+{
+	return;
 }
 
 AMateria* Ice::clone() const

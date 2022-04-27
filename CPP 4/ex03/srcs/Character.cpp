@@ -6,20 +6,20 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:13:05 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/26 15:56:54 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/27 13:29:12 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character() : name("name"), inv_tam(0)
+Character::Character() : ICharacter(), name("name"), inv_tam(0)
 {
 	for (int i = 0; i < 4 ; i++)
 		this->inventory[i] = NULL;
 	return;
 }
 
-Character::Character(std::string str) : name(str), inv_tam(0)
+Character::Character(std::string str) : ICharacter(), name(str), inv_tam(0)
 {
 	for (int i = 0; i < 4 ; i++)
 		this->inventory[i] = NULL;
@@ -29,6 +29,13 @@ Character::Character(std::string str) : name(str), inv_tam(0)
 Character::Character(const Character & cha)
 {
 	*this = cha;
+	return;
+}
+
+Character::~Character()
+{
+	for (int i = 0;i < this->inv_tam; i++)
+		delete this->inventory[i];
 	return;
 }
 
@@ -52,6 +59,7 @@ void Character::equip(AMateria* m)
 	{
 		this->inventory[this->inv_tam] = m;
 		this->inv_tam++;
+		std::cout<< "I have equiped myself with "<<m->getType()<<std::endl;
 	}
 	else
 		std::cout<< "Shit! i have no space left for more Materia!"<<std::endl;
@@ -60,10 +68,11 @@ void Character::equip(AMateria* m)
 void Character::unequip(int idx)
 {
 	if (idx > this->inv_tam - 1 || idx < 0 )
-		std::cout<< "I have nothing to drop there!"<<std::endl;
+		std::cout<< "I have nothing to drop from "<< idx<<std::endl;
 	else
 	{
-		for (int i = idx;i < 4;i++)
+		std::cout<< "I have dropped "<< idx<<std::endl;
+		for (int i = idx;i < 3;i++)
 		{
 			this->inventory[i] = this->inventory[i + 1];	
 		}
