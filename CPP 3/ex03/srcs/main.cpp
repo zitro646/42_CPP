@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:08:51 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/22 17:47:50 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:41:08 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ int main (void)
 	c.attack("Objetivo de C");*/
 	std::cout << "______________________________"<< std::endl;
 	DiamondTrap d("test");
+	DiamondTrap d2("test2");
+	d2 = d;
 	std::cout << "______________________________"<< std::endl;
 	d.highFivesGuys();
 	d.guardGate();
 	d.attack("Objetivo de D");
+	d2.guardGate();
 	std::cout << "______________________________"<< std::endl;
 	return (0);
 }

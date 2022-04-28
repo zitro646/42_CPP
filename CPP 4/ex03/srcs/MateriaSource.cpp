@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:30:06 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/28 13:17:02 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:57:41 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ MateriaSource::MateriaSource(const MateriaSource &source)
 
 MateriaSource::~MateriaSource()
 {
+	for (int i = 0; i < learn_tam ; i++)
+		delete this->learned[i];
 	return;
 }
 
@@ -46,7 +48,10 @@ void MateriaSource::learnMateria(AMateria* mat)
 		this->learn_tam++;
 	}
 	else
+	{
+		delete mat;
 		std::cout << "I cannot learn anymore Materia"<< std::endl;
+	}
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
@@ -57,12 +62,8 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 	for (int i= 0; i < 4; i++)
 	{
 		if (this->learned[i]->getType() == type)
-			return (this->learned[i]);
+			return (this->learned[i]->clone());
 	}
 	return (NULL);
 }
-/*
-
-              
-			  */
 

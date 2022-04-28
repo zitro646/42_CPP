@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:44:57 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/28 13:30:10 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:20:55 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int main (void)
 	j->makeSound();
 	n->makeSound();
 
-	delete meta;
 	delete j;
+	j = i;
+
+	delete meta;
 	delete i;
 	delete n;
 	//meta->makeSound();

@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:13:05 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/27 13:29:12 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:45:43 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ Character::~Character()
 
 Character & Character::operator=(const Character &cha)
 {
+	std::cout<< "Me acabo de igualar "<<std::endl;
 	this->name = cha.getName();
 	for (int i = 0; i < 4 ; i++)
-		this->inventory[i] = cha.inventory[i];
-	this->inv_tam = cha.inv_tam;
+		delete this->inventory[i];
+	for (int i = 0; i < 4 ; i++)
+		this->inventory[i] = NULL;
+	this->inv_tam = 0;
 	return (*this);
 }
 
