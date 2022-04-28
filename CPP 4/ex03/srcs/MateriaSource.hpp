@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:25:59 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/27 13:33:43 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/28 12:36:58 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ class AMateria;
 class MateriaSource: public IMateriaSource
 {
        private:
-              int inv_tam;
-              AMateria *inventory[4];
+              int learn_tam;
+              AMateria *learned[4];
        public:
               MateriaSource();
               MateriaSource(const MateriaSource &source);

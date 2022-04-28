@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.cpp                                       :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 13:32:03 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/25 13:34:52 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/04/28 13:19:27 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/04/28 13:19:53 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongCat.hpp"
+#ifndef WRONGANIMAL_H
+#define WRONGANIMAL_H
 
-WrongCat::WrongCat() : Dog()
-{
-	this->type = "WrongCat";
-	return;
-}
+#include<iomanip>
+#include<iostream>
 
-WrongCat::~WrongCat()
+class WrongAnimal
 {
-	return;
-}
+protected:
+	std::string type;
+public:
+	WrongAnimal();
+	virtual ~WrongAnimal();
+	WrongAnimal& operator=(WrongAnimal const & clap);
+	virtual void makeSound(void) const;
+	std::string getType(void) const;
+};
 
-WrongCat& WrongCat::operator=(WrongCat const & ani)
-{
-	this->type = ani.type;
-	return (*this);
-}
+
+#endif
