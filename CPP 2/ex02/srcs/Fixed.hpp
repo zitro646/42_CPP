@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:39:06 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/21 12:14:43 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/04/29 12:20:23 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,6 @@
 			Fixed operator++(int);
 	};
 	
-	
-
-	
-	
-	
-	
 	//Output Operator
 	std::ostream &operator<<(std::ostream& os, const Fixed &f); //, const Fixed &f
-	
-
 #endif
