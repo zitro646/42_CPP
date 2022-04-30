@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 12:06:38 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/26 13:40:05 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/05/01 00:14:10 by root              #+#    #+#             */
+/*   Updated: 2022/05/01 00:14:58 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef INTERN_H
+#define INTERN_H
 
-//clang++ main.cpp zombieHorde.cpp Zombie.cpp
-
-int main(void)
+class Intern
 {
-    int nbr = 4;
-    int i = 0;
-    Zombie* z = zombieHorde(nbr, "Zombie");
-    while (i < nbr)
-    {
-        z[i++].announce();
-    }
-    delete []z;
-}
+private:
+    /* data */
+public:
+    Intern(/* args */);
+    ~Intern();
+};
+
+
+
+#endif
