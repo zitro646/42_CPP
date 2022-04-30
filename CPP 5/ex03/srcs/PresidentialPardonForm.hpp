@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 23:15:36 by root              #+#    #+#             */
-/*   Updated: 2022/04/30 23:16:13 by root             ###   ########.fr       */
+/*   Updated: 2022/05/01 00:20:42 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ class PresidentialPardonForm : public Form
 		~PresidentialPardonForm();
 		PresidentialPardonForm(const PresidentialPardonForm & form);
 		PresidentialPardonForm & operator=(const PresidentialPardonForm & form);
-		void execute(Bureaucrat const & executor);
 };
 #endif

@@ -102,8 +102,3 @@ void Form::execute(Bureaucrat const & executor)
 		NoSignException();
 	this->executeAction();
 }
-
-void Form::executeAction(void)
-{
-	std::cout<< "Form "<<this->getName()<< " was executed."<<std::endl;	
-}

@@ -15,41 +15,30 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
+
+void leaks(void)
+{
+	system("leaks -q test");
+}
+
 
 int main (void)
 { 
+	atexit(leaks);
 	try
 	{
-		Bureaucrat				bureu("Juan", 137);
-		Bureaucrat				bureu2("Trebor", 5);
-		Bureaucrat				bureu3("Hermes", 36);
-		ShrubberyCreationForm	form("Creation Receipt");
-		RobotomyRequestForm		form2("Robotomy");
-		PresidentialPardonForm	form3("Pedro_on_jail");
+		Intern		*intern = new Intern();
+		Bureaucrat	*bureu = new Bureaucrat("Juan", 137);
+		Bureaucrat	*bureu2 = new Bureaucrat("Trebor", 5);
+		Bureaucrat	*bureu3 = new Bureaucrat("Hermes", 36);
+		//PresidentialPardonForm , RobotomyRequestForm , ShrubberyCreationForm
+		Form 		*form = intern->makeForm("ShrubberyCreationForm", "Alex");
 		std::cout<< "- - - - - - - - - - - - - "<<std::endl;
-		bureu.signForm(form);
-		bureu.signForm(form2);
-		bureu.signForm(form3);
+		bureu->signForm(*form);
+		bureu2->signForm(*form);
+		bureu3->signForm(*form);
 		std::cout<< "- - - - - - - - - - - - - "<<std::endl;
-		bureu2.signForm(form);
-		bureu2.signForm(form2);
-		bureu2.signForm(form3);
-		std::cout<< "- - - - - - - - - - - - - "<<std::endl;
-		bureu3.signForm(form);
-		bureu3.signForm(form2);
-		bureu3.signForm(form3);
-		std::cout<< "- - - - - - - - - - - - - "<<std::endl;
-		bureu.executeForm(form);
-		bureu.executeForm(form2);
-		bureu.executeForm(form3);
-		std::cout<< "- - - - - - - - - - - - - "<<std::endl;
-		bureu2.executeForm(form);
-		bureu2.executeForm(form2);
-		bureu2.executeForm(form3);
-		std::cout<< "- - - - - - - - - - - - - "<<std::endl;
-		bureu3.executeForm(form);
-		bureu3.executeForm(form2);
-		bureu3.executeForm(form3);
 		
 	}
 	catch (std::exception & e)

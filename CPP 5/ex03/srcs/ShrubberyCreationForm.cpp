@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 19:08:55 by root              #+#    #+#             */
-/*   Updated: 2022/04/30 21:24:54 by root             ###   ########.fr       */
+/*   Updated: 2022/05/01 00:21:06 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,6 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreation
     if (this == &form)
         return *this;
     return *this;
-}
-
-void ShrubberyCreationForm::execute(Bureaucrat const & executor)
-{
-	if (getGrade_Exec() < executor.getGrade())
-		GradeTooLowException();
-	if (this->get_signed() == false)
-		NoSignException();
-    this->executeAction();
 }
 
 void ShrubberyCreationForm::executeAction(void)

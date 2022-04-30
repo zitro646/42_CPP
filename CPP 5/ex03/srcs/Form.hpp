@@ -32,7 +32,7 @@ class Form
 		virtual void GradeTooHighException(void);
 		virtual void GradeTooLowException(void);
 		virtual void NoSignException(void);
-		virtual void executeAction();
+		virtual void executeAction() = 0;
 	public:
 		Form(std::string str, int sig , int exe);
 		virtual ~Form();

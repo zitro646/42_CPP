@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 23:16:24 by root              #+#    #+#             */
-/*   Updated: 2022/04/30 23:30:19 by root             ###   ########.fr       */
+/*   Updated: 2022/05/01 00:20:52 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,6 @@ PresidentialPardonForm & PresidentialPardonForm::operator=(const PresidentialPar
     if (this == &form)
         return *this;
     return *this;
-}
-
-void PresidentialPardonForm::execute(Bureaucrat const & executor)
-{
-	if (getGrade_Exec() < executor.getGrade())
-		GradeTooLowException();
-	if (this->get_signed() == false)
-		NoSignException();
-    this->executeAction();
 }
 
 void PresidentialPardonForm::executeAction(void)

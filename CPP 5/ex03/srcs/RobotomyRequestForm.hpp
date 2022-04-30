@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:58:23 by root              #+#    #+#             */
-/*   Updated: 2022/04/30 22:45:25 by root             ###   ########.fr       */
+/*   Updated: 2022/05/01 00:21:25 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ class RobotomyRequestForm : public Form
 		~RobotomyRequestForm();
 		RobotomyRequestForm(const RobotomyRequestForm & form);
 		RobotomyRequestForm & operator=(const RobotomyRequestForm & form);
-		void execute(Bureaucrat const & executor);
 };
 #endif

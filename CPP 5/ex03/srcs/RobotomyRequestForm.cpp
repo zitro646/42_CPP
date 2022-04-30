@@ -6,7 +6,7 @@
 /*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:59:17 by root              #+#    #+#             */
-/*   Updated: 2022/04/30 23:12:06 by root             ###   ########.fr       */
+/*   Updated: 2022/05/01 00:21:00 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,6 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
     if (this == &form)
         return *this;
     return *this;
-}
-
-void RobotomyRequestForm::execute(Bureaucrat const & executor)
-{
-	if (getGrade_Exec() < executor.getGrade())
-		GradeTooLowException();
-	if (this->get_signed() == false)
-		NoSignException();
-    this->executeAction();
 }
 
 void RobotomyRequestForm::executeAction(void)
