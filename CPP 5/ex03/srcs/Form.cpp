@@ -37,7 +37,6 @@ std::ostream &operator<<(std::ostream& os, const Form &form)
 	return (os);
 }
 
-
 Form::Form(const Form & form) : name(form.getName()), sign(form.get_signed()), grade_sign(form.getGrade_Sign()) , grade_exec(form.getGrade_Exec())
 {
 	return;
@@ -49,18 +48,20 @@ Form & Form::operator=(const Form & form)
 		return (*this);
 	return (*this);
 }
-
 //Funciones que lanzan las excepciones
 void Form::GradeTooHighException(void)
 {
-	std::cout << "Grade is too high" <<std::endl;
 	throw std::invalid_argument("grade is to high");
 }
 
 void Form::GradeTooLowException(void)
 {
-	std::cout << "Grade is too low" <<std::endl;
 	throw std::invalid_argument("grade is to low");
+}
+
+void Form::NoSignException(void)
+{
+	throw std::invalid_argument("form isn't signed");
 }
 
 //Getters
@@ -91,4 +92,13 @@ void Form::beSigned(const Bureaucrat &bureu)
 		GradeTooLowException();
 	else
 		this->sign = true;
+}
+
+void Form::execute(Bureaucrat const & executor)
+{
+	if (getGrade_Exec() < executor.getGrade())
+		GradeTooLowException();
+	if (this->get_signed() == false)
+		NoSignException();
+	this->executeAction();
 }
