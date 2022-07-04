@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Caster.hpp                                         :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 15:22:00 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/05 01:42:04 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/07/05 01:41:12 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/07/05 01:41:49 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@
 #include <wchar.h>
 #include <math.h> 
 
-class Caster
+class Serializer
 {
 	public:
-		Caster(std::string str);
-		~Caster();
+		Serializer(std::string str);
+		~Serializer();
 		void show_result(void);
 	private:
+		typedef void (Serializer::*funptr) (void);
 		std::string str;
 		int			type_input;
 

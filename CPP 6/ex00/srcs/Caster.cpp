@@ -6,23 +6,17 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:27:57 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/06/24 19:20:05 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/05 01:31:35 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Caster.hpp"
 
 
-Caster::Caster(std::string n_str): str(n_str), type_input(ERROR_TYPE), n_char(0), n_int(0), n_float(0), n_double(0)
+Caster::Caster(std::string n_str): str(n_str), type_input(ERROR_TYPE)
 {
 	type_input = identify_type(n_str);
-	Caster::funptr function[2] = {&Caster::turnfromChar , &Caster::turnfromInt_Flo_Dou};
-	if (type_input == CHAR_TYPE)
-		(this->*(function[0]))();
-	else if (type_input != ERROR_TYPE)
-		(this->*(function[1]))();
-	
-	std::cout << "Casteo -> " << type_input << std::endl;
+	//std::cout << "Casteo -> " << type_input << std::endl;
 	return;
 }
 
@@ -35,83 +29,180 @@ int	Caster::identify_type(std::string str)
 {
 	int result_type;
 	int i;
+	int dot;
 
-	i = 0;
+	i = 1;
+	dot = 0;
 	result_type = ERROR_TYPE;
-	if (str.length() == 1 && isascii(str[0]) == 1 && isdigit(str[0]) != 1)
+	if (str.length() == 1 && !!isascii(str[0]) == 1 && !!isdigit(str[0]) != 1)
 	{
 		return CHAR_TYPE;
 	}
-	if (str[1] == '-' || isdigit(str[0]) == 1)
+	if (str[0] == '-' || !!isdigit(str[0]) == 1)
 	{
 		result_type = INT_TYPE;
-		while (isdigit(str[i]))
+		while (!!isdigit(str[i]) || str[i] == '.' )
 		{
-			if (str[++i] == '.' && isdigit(str[i + 1]))
+			if (str[i] == '.')
 			{
+				if (dot != 0 && str[i] == '.')
+					return ERROR_TYPE;
 				result_type = DOUBLE_TYPE;
-				i++;
+				dot++;
 			}
+			i++;
 		}
 		if ((str[i] == 'f' || str[i] == 'F') && result_type == DOUBLE_TYPE)
 			result_type = FLOAT_TYPE;
-
+		else if (str[i] != '\0' || str[i - 1] == '.' || (result_type == FLOAT_TYPE && str[i + 1] != '\0'))
+			result_type = ERROR_TYPE;
+			
 	}
 	return result_type;
 }
 
-void Caster::turnfromChar(void)
-{
-	std::cout<< "Character"<< std::endl;
-	this->n_char = this->str[0];
-	this->n_int = this->n_char; 
-	this->n_float = float(this->n_int);
-	this->n_double = double(this->n_int);
-}
-
-void Caster::turnfromInt_Flo_Dou(void)
-{
-	std::cout<< "Integer - Float - Double"<< std::endl;
-	this->n_int = atoi(this->str.c_str()); 
-	this->n_char = this->n_int;
-	this->n_float = atof(str.c_str());
-	this->n_double = atof(str.c_str());
-}
-
-
 void Caster::displayChar(void)
 {
-	if (this->type_input == ERROR_TYPE || isascii(this->n_char) == 0)
+	int value;
+	double value_2;
+	
+	value = atoi(this->str.c_str());
+	value_2 = atof(this->str.c_str());
+	if (this->type_input == ERROR_TYPE)
 		std::cout<< "Char : imposible" <<std::endl;
-	else if (isprint(this->n_char) != 1)
-		std::cout<< "Char : non printable" <<std::endl;
+	else if (this->type_input == CHAR_TYPE)
+		std::cout<< "Char : "<<this->str <<std::endl;
 	else
-		std::cout<< "Char : " << this->n_char<<std::endl;
+	{
+		if (value_2 - double(value) == 0 && isprint(value) == 1)
+			std::cout<< "Char : "<< char(value) <<std::endl;
+		else
+			std::cout<< "Char : Non Printable" <<std::endl;
+	}
 }
+
 void Caster::displayInteger(void)
 {
+	int value;
+	double value_2;
+	
+	value = atoi(this->str.c_str());
+	value_2 = atof(this->str.c_str());
+	if (this->type_input == ERROR_TYPE)
+		std::cout<< "Int : imposible" <<std::endl;
+	else if (this->type_input == CHAR_TYPE)
+		std::cout<< "Int : "<< int(this->str[0])<<std::endl;
+	else
+	{
+		if ( value_2 < std::numeric_limits<int>::min() || value_2 > std::numeric_limits<int>::max() )
+			std::cout<< "Int : overlimit " <<std::endl;
+		else 
+			std::cout<< "Int : " << value <<std::endl;
+	}
+}
 
+int Caster::float_inff(void)
+{
+	std::string n_str;
+	float x;
+	char * e;
+
+	n_str = this->str;
+	if (this->type_input == FLOAT_TYPE)
+		n_str.pop_back();
+	x = (float)strtod(n_str.c_str(),&e);
+	if (*e != '\0')
+		return 2;
+	if ( x < std::numeric_limits<float>::lowest())
+		return -1;
+	if (x > std::numeric_limits<float>::max())
+		return 1;
+	return 0;
 }
 
 void Caster::displayFloat(void)
 {
+	int value;
+	float value_2;
+	
+	value = atoi(this->str.c_str());
+	value_2 = atof(this->str.c_str());
+	if (this->type_input == ERROR_TYPE)
+		std::cout<< "Float : nanf" <<std::endl;
+	else if (this->type_input == CHAR_TYPE)
+		std::cout<< "Float : "<< float(this->str[0]) << ".0f" <<std::endl;
+	else
+	{
+		if (float_inff() != 0)
+		{
+			if (float_inff() == 1)
+				std::cout<< "Float : +inff " <<std::endl;
+			else if (float_inff() == -1)
+				std::cout<< "Float : -inff " <<std::endl;
+			else
+				std::cout<< "Float : error (HOW?)" <<std::endl;
+		}
+		else 
+			if (value_2 == floor(value_2))
+				std::cout<< "Float : " << value_2 << ".0f" <<std::endl;
+			else
+			 	std::cout<< "Float : " << value_2 << "f" <<std::endl;
+	}
+}
 
+int Caster::double_inff(void)
+{
+	std::string n_str;
+	double x;
+	char * e;
+
+	n_str = this->str;
+	if (this->type_input == FLOAT_TYPE)
+		n_str.pop_back();
+	x = strtod(n_str.c_str(),&e);
+	if (*e != '\0')
+		return 2;
+	if ( x < std::numeric_limits<double>::lowest())
+		return -1;
+	if (x > std::numeric_limits<double>::max())
+		return 1;
+	return 0;
 }
 
 void Caster::displayDouble(void)
 {
-
-}
-
-void Caster::displayError(void)
-{
-
+	int value;
+	double value_2;
+	
+	value = atoi(this->str.c_str());
+	value_2 = atof(this->str.c_str());
+	if (this->type_input == ERROR_TYPE)
+		std::cout<< "Double : nan" <<std::endl;
+	else if (this->type_input == CHAR_TYPE)
+		std::cout<< "Double : "<< double(this->str[0])<< ".0" <<std::endl;
+	else
+	{
+		if (double_inff() != 0)
+		{
+			if (double_inff() == 1)
+				std::cout<< "Double : +inff " <<std::endl;
+			else if (double_inff() == -1)
+				std::cout<< "Double : -inff " <<std::endl;
+			else
+				std::cout<< "Double : error (HOW?)" <<std::endl;
+		}
+		else 
+			if (value_2 == floor(value_2))
+				std::cout<< "Double : " << value_2 << ".0" <<std::endl;
+			else
+			 	std::cout<< "Double : " << value_2 <<std::endl;
+	}
 }
 
 void Caster::show_result(void)
-{
-	this->displayChar();	
-	std::cout<< "Integer :"<< this->n_int <<std::endl;
-	std::cout<< "Double :"<< this->n_double <<std::endl;
-	std::cout<< "Float :"<< this->n_float <<std::endl;
+{	
+	this->displayChar();
+	this->displayInteger();
+	this->displayFloat();
+	this->displayDouble();
 }
