@@ -6,11 +6,11 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 13:56:38 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/05 00:22:38 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/06 13:55:03 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Caster.hpp"
+#include "Data.hpp"
 
 #include<iostream>
 #include <sstream>
@@ -20,18 +20,24 @@ void leaks(void)
 	system("leaks -q test");
 }
 
-int main (int argc, char **argv)
+int main (void)
 {
-	std::string str;
-
-	atexit(leaks);
-	if (argc == 2)
-	{
-		str = argv[1];
-		Caster *test = new Caster(str);
-		test->show_result();
-	}
-	else
-		std::cout<< "Wrong input "<<argc <<std::endl;
+	//atexit(leaks);
+	Data *origin = new Data("Jeff");
+	Data *passby;
+	uintptr_t dir_pointer;
+	
+	origin->salute();
+	dir_pointer = serialize(origin);
+	std::cout << "______________________________" << std::endl;
+	std::cout << "Data Pointer Origin	: " << origin << std::endl;
+	std::cout << "Data Serialized		: " << dir_pointer << std::endl;
+	std::cout << "______________________________" << std::endl;
+	passby = deserialize(dir_pointer);
+	passby->salute();
+	std::cout << "______________________________" << std::endl;
+	std::cout << "Data Pointer Origin	: " << origin << std::endl;
+	std::cout << "Data Pointer Passby	: " << passby << std::endl;
+	std::cout << "______________________________" << std::endl;
 	return (0);
 }

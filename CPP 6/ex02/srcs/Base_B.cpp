@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base_B.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 13:56:38 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/05 10:26:01 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/07/06 15:42:52 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/07/06 15:56:01 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Caster.hpp"
+#include "Base_B.hpp"
 
-#include<iostream>
-#include <sstream>
-
-/*
-void leaks(void)
+Base_B::Base_B()
 {
-	system("leaks -q test");
+	return;
 }
-*/
-int main (int argc, char **argv)
-{
-	std::string str;
 
-	//atexit(leaks);
-	if (argc == 2)
-	{
-		str = argv[1];
-		Caster *test = new Caster(str);
-		test->show_result();
-	}
-	else
-		std::cout<< "Wrong input "<<argc <<std::endl;
-	return (0);
+Base_B::~Base_B()
+{
+	return;
+}
+
+void Base_B::info(void) const
+{
+	std::cout << "Im base B" << std::endl;
 }

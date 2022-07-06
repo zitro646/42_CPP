@@ -16,7 +16,7 @@ SRC_PATH    = srcs
 OBJ_PATH    = objects
 
 # SOURCES #
-SRC =  Data.cpp main.cpp 
+SRC = main.cpp Base.cpp Base_A.cpp Base_B.cpp Base_C.cpp
 
 # RULES #
 all: $(NAME)

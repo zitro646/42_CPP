@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base_A.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/28 13:56:38 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/05 10:26:01 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/07/06 15:42:38 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/07/06 15:50:51 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Caster.hpp"
+#ifndef BASE_A_H
+#define BASE_A_H
 
-#include<iostream>
-#include <sstream>
+#include "Base.hpp"
 
-/*
-void leaks(void)
+class Base_A : public Base
 {
-	system("leaks -q test");
-}
-*/
-int main (int argc, char **argv)
-{
-	std::string str;
+	public:
+		Base_A();
+		~Base_A();
+		void info(void) const;
+};
 
-	//atexit(leaks);
-	if (argc == 2)
-	{
-		str = argv[1];
-		Caster *test = new Caster(str);
-		test->show_result();
-	}
-	else
-		std::cout<< "Wrong input "<<argc <<std::endl;
-	return (0);
-}
+#endif
