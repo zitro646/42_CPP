@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 12:54:57 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/22 17:38:04 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:58:25 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 //Constructors
 ClapTrap::ClapTrap() : name("without name"), hp(10) , energy_points(10) , atack_dmg(0)
 {
-	std::cout << "LLama al simple (Claptrap) "<<std::endl;
+	//std::cout << "LLama al simple (Claptrap) "<<std::endl;
 	std::cout << "Claptrap " << this->name <<" arrives to the party "<<std::endl;
 	return;
 }
 
 ClapTrap::ClapTrap(std::string str) : name(str), hp(10) , energy_points(10) , atack_dmg(0)
 {
-	std::cout << "LLama al compuesto (Claptrap) -> " << str <<std::endl;
+	//std::cout << "LLama al compuesto (Claptrap) -> " << str <<std::endl;
 	std::cout << "Claptrap " << this->name <<" arrives on the party "<<std::endl;
 	return;
 }

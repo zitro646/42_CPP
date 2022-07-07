@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:18:57 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/22 17:40:07 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:58:32 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ FragTrap::FragTrap() : ClapTrap()
 
 FragTrap::FragTrap(std::string str) : ClapTrap(str)
 {
-	std::cout << "LLama al compuesto (FragTrap)"<<std::endl;
+	//std::cout << "LLama al compuesto (FragTrap)"<<std::endl;
 	std::cout << "FragTrap " << this->name <<" arrives to the party "<<std::endl;
 	this->hp = 100;
 	this->energy_points = 50;

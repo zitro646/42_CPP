@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:08:51 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/28 16:39:21 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:52:16 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 #include "FragTrap.hpp"
 //clang++ main.cpp ClapTrap.cpp
 
+void leaks (void)
+{
+	system("leaks -q test");
+}
+
 int main (void)
 {
+	atexit(leaks);
 	std::cout << "______________________________"<< std::endl;
 	ClapTrap a("Pepe");
-	ClapTrap d("hdibasiudas");
 	
 	a.attack("Juan");
 	a.takeDamage(3);
@@ -34,6 +39,5 @@ int main (void)
 	c.highFivesGuys();
 	c.attack("Juan");
 	std::cout << "______________________________"<< std::endl;
-	a = d;
 	return (0);
 }

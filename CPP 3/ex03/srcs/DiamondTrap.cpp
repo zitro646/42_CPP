@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:27:24 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/22 17:52:53 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/07 17:03:46 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ DiamondTrap::DiamondTrap() : FragTrap("without name"), ScavTrap("without name")
 
 DiamondTrap::DiamondTrap(std::string str) : FragTrap(str), ScavTrap(str)
 {
-	std::cout << "LLama al compuesto "<<std::endl;
+	//std::cout << "LLama al compuesto "<<std::endl;
 	this->name = str;
 	this->ClapTrap::name = str + "_clap_name";
 	this->hp = FragTrap::hp;
@@ -52,8 +52,7 @@ DiamondTrap& DiamondTrap::operator=(DiamondTrap const & diam)
 	return (*this);
 }
 
-/*
-void DiamondTrap::attack(std::string const & target)
+void DiamondTrap::whoAmI(void)
 {
-	this->ScavTrap::attack(target);
-}*/
+	std::cout << "Hi im " << this->name << " and my ClapTrap name is "<< this->ClapTrap::name << std::endl;
+}

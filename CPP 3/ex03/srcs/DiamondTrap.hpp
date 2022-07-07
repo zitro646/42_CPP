@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 16:21:05 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/22 17:25:45 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/07 17:01:59 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class DiamondTrap : public FragTrap, public ScavTrap
 		~DiamondTrap();
 		DiamondTrap& operator=(DiamondTrap const & clap);
 		using ScavTrap::attack;
-		//void attack(std::string const & target);
+		void whoAmI(void);
 	private:
 		std::string name;
 };

@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 14:36:02 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/22 17:39:46 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:58:37 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 
 ScavTrap::ScavTrap(std::string str) : ClapTrap(str)
 {
-	std::cout << "LLama al compuesto (ScavTrap)"<<std::endl;
+	//std::cout << "LLama al compuesto (ScavTrap)"<<std::endl;
 	std::cout << "Scavrap " << this->name <<" arrives to the party "<<std::endl;
 	this->hp = 100;
 	this->energy_points = 50;

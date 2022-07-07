@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:08:51 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/21 16:18:01 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:49:40 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int main (void)
 
 	ScavTrap b("Pedro");
 	b.guardGate();
+	b.takeDamage(7);
 	b.attack("Juan");
+	b.beRepaired(5);
 	return (0);
 }

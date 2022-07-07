@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Data.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 01:41:12 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/07 16:28:12 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/07/07 16:01:52 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/07/07 16:35:45 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_H
-#define DATA_H
+#include <iostream>
 
-#include<iomanip>
-#include<iostream>
-class Data
+template<class T>
+class Array
 {
-	public:
-		Data(std::string name);
-		Data(Data& data);
-		Data(void);
-		~Data();
-		Data& operator= (Data const & data);
-		void salute(void);
 	private:
-		std::string name;
-		
+		Array();
+		Array(unsigned int size);
+		Array(Array const &array);
+		~Array();
+
+		Array& operator= (Array const & data);
+		T &operator[](int i);
+		//Allocar memoria usando new[]
+
+	public:
 };
-
-uintptr_t serialize(Data *ptr);
-Data *deserialize(uintptr_t raw);
-
-#endif

@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 12:08:51 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/21 12:23:22 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:07:35 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main( void ) 
 {
-	
+	/*
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 	std::cout << a << std::endl;
@@ -25,8 +25,9 @@ int main( void )
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
-	return 0;
-	/*Fixed a( 42.42f );
+	
+	return 0;*/
+	Fixed a( 42.42f );
 	Fixed b( 42.42f );
 	Fixed c( 10 );
 	Fixed d( 100 );
@@ -71,8 +72,8 @@ int main( void )
 	std::cout << "__________________________________________"<< std::endl;
 	std::cout << " a("<< a << ") / b("<< b << ") -> "<< (a/b) << std::endl;
 	std::cout << " a("<< a << ") / c("<< c << ") -> "<< (a/c) << std::endl;
-	std::cout << " a("<< a << ") / d("<< d << ") -> "<< (a/d) << std::endl;*/
-	/*std::cout << "__________________________________________"<< std::endl;
+	std::cout << " a("<< a << ") / d("<< d << ") -> "<< (a/d) << std::endl;
+	std::cout << "__________________________________________"<< std::endl;
 	std::cout << "Pre-decrement " << std::endl;
 	std::cout << "Before a = "<< a << std::endl;
 	std::cout << "--a("<< --a << ")"<< std::endl;
@@ -92,6 +93,6 @@ int main( void )
 	std::cout << "Before b = "<< b << std::endl;
 	std::cout << "b++("<< b++ << ")"<< std::endl;
 	std::cout << "After b = "<< b << std::endl;
-	std::cout << "__________________________________________"<< std::endl;*/
+	std::cout << "__________________________________________"<< std::endl;
 	return 0; 
 }
