@@ -27,6 +27,7 @@ class ClapTrap
 	public:
 		ClapTrap();
 		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap & clap);
 		virtual ~ClapTrap();
 		ClapTrap& operator=(ClapTrap const & clap);
 		virtual void attack(std::string const & target);

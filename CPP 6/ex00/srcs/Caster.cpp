@@ -20,9 +20,23 @@ Caster::Caster(std::string n_str): str(n_str), type_input(ERROR_TYPE)
 	return;
 }
 
+Caster::Caster(const Caster & cast)
+{
+	*this = cast;
+}
+
 Caster::~Caster()
 {
 	return;
+}
+
+Caster Caster::operator=(const Caster & caster)
+{
+	if (this == &caster)
+		return *this;
+	this->str = caster.str;
+	this->type_input  = caster.type_input;
+	return *this;
 }
 
 int	Caster::identify_type(std::string str)

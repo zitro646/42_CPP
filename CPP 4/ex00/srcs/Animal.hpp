@@ -23,6 +23,7 @@ protected:
 public:
 	Animal();
 	virtual ~Animal();
+	Animal(const Animal & ani);
 	Animal& operator=(Animal const & clap);
 	virtual void makeSound(void) const;
 	std::string getType(void) const;

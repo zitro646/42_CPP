@@ -20,7 +20,9 @@ class Base_C :  public Base
 {	
 	public:
 		Base_C();
+		Base_C(const Base_C & base);
 		~Base_C();
+		Base_C operator=(const Base_C & caster);
 		void info(void) const;
 };
 

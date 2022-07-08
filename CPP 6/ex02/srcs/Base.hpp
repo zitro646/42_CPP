@@ -21,7 +21,9 @@ class Base
 {	
 	public:
 		Base();
+		Base(const Base & base);
 		virtual ~Base();
+		Base operator=(const Base & caster);
 		virtual void info(void) const;
 };
 

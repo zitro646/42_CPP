@@ -18,6 +18,12 @@ WrongAnimal::WrongAnimal() : type("test")
 	return;
 }
 
+WrongAnimal::WrongAnimal(const WrongAnimal & w_ani)
+{
+	*this = w_ani;
+	return;
+}
+
 WrongAnimal::~WrongAnimal()
 {
 	return;

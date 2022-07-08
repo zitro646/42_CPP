@@ -23,6 +23,12 @@ Animal::~Animal()
 	return;
 }
 
+Animal::Animal(const Animal & ani)
+{
+	*this = ani;
+	return;
+}
+
 Animal& Animal::operator=(Animal const & ani)
 {
 	this->type = ani.type;

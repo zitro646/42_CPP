@@ -18,6 +18,12 @@ Animal::Animal() : type("test")
 	return;
 }
 
+Animal::Animal(const Animal & ani)
+{
+	*this = ani;
+	return;
+}
+
 Animal::~Animal()
 {
 	return;

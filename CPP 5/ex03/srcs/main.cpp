@@ -16,16 +16,16 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
-
+/*
 void leaks(void)
 {
 	system("leaks -q test");
-}
+}*/
 
 
 int main (void)
 { 
-	atexit(leaks);
+	//atexit(leaks);
 	try
 	{
 		Intern		*intern = new Intern();

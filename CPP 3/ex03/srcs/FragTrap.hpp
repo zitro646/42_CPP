@@ -20,6 +20,7 @@ class FragTrap : virtual public ClapTrap
 	public:
 		FragTrap();
 		FragTrap(std::string str);
+		FragTrap(const FragTrap & frag);
 		virtual ~FragTrap();
 		FragTrap& operator=(FragTrap const & clap);
 		void highFivesGuys(void);

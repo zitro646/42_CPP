@@ -22,6 +22,7 @@ protected:
 	std::string type;
 public:
 	Animal();
+	Animal(const Animal & ani);
 	virtual ~Animal();
 	Animal& operator=(Animal const & clap);
 	virtual void makeSound(void) const;

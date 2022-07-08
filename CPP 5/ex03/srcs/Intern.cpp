@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mortiz <mortiz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 00:55:36 by root              #+#    #+#             */
-/*   Updated: 2022/05/01 01:24:54 by root             ###   ########.fr       */
+/*   Updated: 2022/07/08 16:42:11 by mortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,21 @@ Intern::Intern()
     return;
 }
 
+Intern::Intern(const Intern & inter)
+{
+    *this = inter;
+}
+
 Intern::~Intern()
 {
     return;
+}
+
+Intern & Intern::operator=(const Intern & inter)
+{
+    if (this == &inter)
+        return *this;
+    return *this;
 }
 
 Form* Intern::makeForm(std::string type ,std::string target)

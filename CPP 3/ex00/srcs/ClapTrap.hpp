@@ -26,6 +26,7 @@ class ClapTrap
 		int			atack_dmg;
 	public:
 		ClapTrap();
+		ClapTrap(const ClapTrap & clap);
 		ClapTrap(std::string name);
 		~ClapTrap();
 		ClapTrap& operator=(ClapTrap const & clap);

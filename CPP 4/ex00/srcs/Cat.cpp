@@ -19,6 +19,11 @@ Cat::Cat() : Animal()
 	return;
 }
 
+Cat::Cat(const Cat & cat)
+{
+	*this = cat;
+}
+
 Cat::~Cat()
 {
 	return;

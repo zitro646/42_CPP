@@ -16,14 +16,15 @@
 #include "FragTrap.hpp"
 //clang++ main.cpp ClapTrap.cpp
 
-void leaks (void)
+/*void leaks (void)
 {
 	system("leaks -q test");
 }
+*/
 
 int main (void)
 {
-	atexit(leaks);
+	//atexit(leaks);
 	std::cout << "______________________________"<< std::endl;
 	ClapTrap a("Pepe");
 	

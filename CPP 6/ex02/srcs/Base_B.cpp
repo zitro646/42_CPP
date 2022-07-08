@@ -17,6 +17,19 @@ Base_B::Base_B()
 	return;
 }
 
+Base_B::Base_B(const Base_B & base)
+{
+	*this = base;
+	return;
+}
+
+Base_B Base_B::operator=(const Base_B & base)
+{
+	if (this == &base)
+		return *this;
+	return *this;
+}
+
 Base_B::~Base_B()
 {
 	return;

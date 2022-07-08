@@ -24,11 +24,10 @@ DiamondTrap::DiamondTrap() : FragTrap("without name"), ScavTrap("without name")
 }
 
 
-DiamondTrap::DiamondTrap(std::string str) : FragTrap(str), ScavTrap(str)
+DiamondTrap::DiamondTrap(std::string str) : ClapTrap(str + "_clap_name") ,FragTrap(str), ScavTrap(str)
 {
 	//std::cout << "LLama al compuesto "<<std::endl;
 	this->name = str;
-	this->ClapTrap::name = str + "_clap_name";
 	this->hp = FragTrap::hp;
 	this->energy_points = ScavTrap::energy_points;
 	this->atack_dmg = FragTrap::atack_dmg;
@@ -36,6 +35,11 @@ DiamondTrap::DiamondTrap(std::string str) : FragTrap(str), ScavTrap(str)
 	return;
 }
 
+DiamondTrap::DiamondTrap(const DiamondTrap & diam)
+{
+	*this = diam;
+	return;
+}
 
 DiamondTrap::~DiamondTrap()
 {
@@ -45,6 +49,8 @@ DiamondTrap::~DiamondTrap()
 DiamondTrap& DiamondTrap::operator=(DiamondTrap const & diam)
 {
 	std::cout << "DiamondTrap " << this->ScavTrap::name <<" is now "<< diam.ScavTrap::name<<std::endl;
+	if (&diam == this)
+		return *this;
 	this->name = diam.ScavTrap::name;
 	this->hp = diam.ScavTrap::hp;
 	this->energy_points = diam.ScavTrap::energy_points;

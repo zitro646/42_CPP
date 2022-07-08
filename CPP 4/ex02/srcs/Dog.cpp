@@ -22,6 +22,11 @@ Dog::Dog() : Animal()
 	return;
 }
 
+Dog::Dog(const Dog & dog)
+{
+	*this = dog;
+}
+
 Dog::~Dog()
 {
 	delete this->brain;

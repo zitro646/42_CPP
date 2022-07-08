@@ -18,6 +18,12 @@ WrongCat::WrongCat() : WrongAnimal()
 	return;
 }
 
+WrongCat::WrongCat(const WrongCat & w_ani)
+{
+	*this = w_ani;
+	return;
+}
+
 WrongCat::~WrongCat()
 {
 	return;

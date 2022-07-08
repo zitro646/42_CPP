@@ -30,6 +30,11 @@ ScavTrap::ScavTrap(std::string str) : ClapTrap(str)
 	return;
 }
 
+ScavTrap::ScavTrap(const ScavTrap & scav)
+{
+	*this = scav;
+	return;
+}
 
 ScavTrap::~ScavTrap()
 {
@@ -40,6 +45,8 @@ ScavTrap::~ScavTrap()
 ScavTrap& ScavTrap::operator=(ScavTrap const & scav)
 {
 	std::cout << "Scavrap " << this->name <<" is now "<< scav.name<<std::endl;
+	if (&scav == this)
+		return *this;
 	this->name = scav.name;
 	this->hp = scav.hp;
 	this->energy_points = scav.energy_points;

@@ -19,7 +19,9 @@ class Base_A : public Base
 {
 	public:
 		Base_A();
+		Base_A(const Base_A & base);
 		~Base_A();
+		Base_A operator=(const Base_A & caster);
 		void info(void) const;
 };
 

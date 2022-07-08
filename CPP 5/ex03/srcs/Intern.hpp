@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mortiz <mortiz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 00:14:10 by root              #+#    #+#             */
-/*   Updated: 2022/05/01 01:15:10 by root             ###   ########.fr       */
+/*   Updated: 2022/07/08 16:39:44 by mortiz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Intern
     public:
         Intern();
         ~Intern();
+        Intern(const Intern & intern);
+        Intern & operator=(const Intern & inter);
         Form* makeForm(std::string type ,std::string target);
 };
 

@@ -14,20 +14,23 @@
 #include "ClapTrap.hpp"
 //clang++ main.cpp ClapTrap.cpp
 
+/*
 void leaks (void)
 {
 	system("leaks -q test");
 }
-
+*/
 int main (void)
 {
-	atexit(leaks);
+	//atexit(leaks);
 	ClapTrap a	("Pepe");
-	ClapTrap b	("Jose");
+	ClapTrap b	(a);
+	ClapTrap c	("Jose");
 
 	a.attack("Juan");
 	a.takeDamage(3);
 	a.beRepaired(3);
-	a = b;
+	a = c;
+	
 	return (0);
 }

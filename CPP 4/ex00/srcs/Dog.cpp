@@ -19,6 +19,11 @@ Dog::Dog() : Animal()
 	return;
 }
 
+Dog::Dog(const Dog & dog)
+{
+	*this = dog;
+}
+
 Dog::~Dog()
 {
 	return;

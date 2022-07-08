@@ -22,6 +22,7 @@ class Dog : public Animal
 		Brain *brain;
 	public:
 		Dog();
+		Dog(const Dog & dog);
 		~Dog();
 		Dog& operator=(Dog const & clap);
 		void makeSound(void) const;

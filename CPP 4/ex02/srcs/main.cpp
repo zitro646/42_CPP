@@ -14,10 +14,10 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-void leaks(void)
+/*void leaks(void)
 {
 	system("leaks -q test");
-}
+}*/
 
 
 int main (void)
@@ -25,7 +25,7 @@ int main (void)
 	const Animal* dog = new Dog();
     const Animal* cat = new Cat();
 	//const Animal* animal = new Animal();
-	atexit(leaks);
+	//atexit(leaks);
 	std::cout<<"____________________"<<std::endl;
 	dog->makeSound();
 	//dog->getIdea(1);

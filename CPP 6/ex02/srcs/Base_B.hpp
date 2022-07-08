@@ -21,7 +21,9 @@ class Base_B:  public Base
 {	
 	public:
 		Base_B();
+		Base_B(const Base_B & base);
 		~Base_B();
+		Base_B operator=(const Base_B & caster);
 		void info(void) const;
 };
 

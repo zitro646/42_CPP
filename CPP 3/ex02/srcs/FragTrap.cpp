@@ -30,6 +30,11 @@ FragTrap::FragTrap(std::string str) : ClapTrap(str)
 	return;
 }
 
+FragTrap::FragTrap(const FragTrap & frag)
+{
+	*this = frag;
+	return;
+}
 
 FragTrap::~FragTrap()
 {
@@ -37,13 +42,15 @@ FragTrap::~FragTrap()
 	return;
 }
 
-FragTrap& FragTrap::operator=(FragTrap const & scav)
+FragTrap& FragTrap::operator=(FragTrap const & frag)
 {
-	std::cout << "FragTrap " << this->name <<" is now "<< scav.name<<std::endl;
-	this->name = scav.name;
-	this->hp = scav.hp;
-	this->energy_points = scav.energy_points;
-	this->atack_dmg = scav.atack_dmg;
+	std::cout << "FragTrap " << this->name <<" is now "<< frag.name<<std::endl;
+	if (&frag == this)
+		return *this;
+	this->name = frag.name;
+	this->hp = frag.hp;
+	this->energy_points = frag.energy_points;
+	this->atack_dmg = frag.atack_dmg;
 	return (*this);
 	
 }

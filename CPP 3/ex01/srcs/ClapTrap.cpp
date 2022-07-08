@@ -29,6 +29,12 @@ ClapTrap::ClapTrap(std::string str) : name(str), hp(10) , energy_points(10) , at
 	return;
 }
 
+ClapTrap::ClapTrap(const ClapTrap & clap)
+{
+	*this = clap;
+	return;
+}
+
 //Destructor
 ClapTrap::~ClapTrap()
 {
@@ -41,6 +47,8 @@ ClapTrap::~ClapTrap()
 ClapTrap& ClapTrap::operator=(ClapTrap const & clap)
 {
 	std::cout << "Claptrap " << this->name <<" is now "<< clap.name<<std::endl;
+	if (&clap == this)
+		return *this;
 	this->name = clap.name;
 	this->hp = clap.hp;
 	this->energy_points = clap.energy_points;

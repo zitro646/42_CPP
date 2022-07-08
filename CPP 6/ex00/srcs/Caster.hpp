@@ -30,7 +30,9 @@ class Caster
 {
 	public:
 		Caster(std::string str);
+		Caster(const Caster & cast);
 		~Caster();
+		Caster operator=(const Caster & caster);
 		void show_result(void);
 	private:
 		std::string str;

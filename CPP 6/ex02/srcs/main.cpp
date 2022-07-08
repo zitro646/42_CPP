@@ -19,10 +19,10 @@
 #include<iostream>
 #include <sstream>
 
-void leaks(void)
+/*void leaks(void)
 {
 	system("leaks -q test");
-}
+}*/
 
 Base *generate(void)
 {
@@ -63,7 +63,7 @@ void identify(Base *p)
 
 int main (void)
 {
-	atexit(leaks);
+	//atexit(leaks);
 	Base *base = generate();
 	identify(base);
 	base->info();

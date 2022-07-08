@@ -17,9 +17,22 @@ Base::Base()
 	return;
 }
 
+Base::Base(const Base & base)
+{
+	*this = base;
+	return;
+}
+
 Base::~Base()
 {
 	return;
+}
+
+Base Base::operator=(const Base & base)
+{
+	if (this == &base)
+		return *this;
+	return *this;
 }
 
 void Base::info(void) const

@@ -15,10 +15,10 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
-void leaks(void)
+/*void leaks(void)
 {
 	system("leaks -q test");
-}
+}*/
 
 int main (void)
 {
@@ -26,7 +26,7 @@ int main (void)
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	const WrongAnimal* n = new WrongCat();
-	atexit(leaks);
+	//atexit(leaks);
 
 	std::cout << "The Dog should be a "<< j->getType() << " " << std::endl;
 	std::cout << "The Cat should be a " << i->getType() << " " << std::endl;

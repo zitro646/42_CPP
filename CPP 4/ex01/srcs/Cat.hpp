@@ -22,6 +22,7 @@ private:
 	Brain *brain;
 public:
 	Cat();
+	Cat(const Cat & cat);
 	~Cat();
 	Cat& operator=(Cat const & clap);
 	void makeSound(void) const;
