@@ -12,14 +12,28 @@
 
 #include "span.hpp"
 
+
+int main()
+{
+	Span sp (5);
+	sp.addNumber(5);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
+}
+
+/*
 int main (void)
 {
 	Span x(4);
 	
-	x.addNumber(4);
-	x.addNumber(99);
-	x.addNumber(42);
-	x.addNumber(53);
+	x.addNumber(-20);
+	x.addNumber(15);
+	x.addNumber(50);
+	x.addNumber(25);
 	try
 	{
 		x.addNumber(24);
@@ -32,6 +46,7 @@ int main (void)
 	std::cout << x << std::endl;
 	
 	std::cout << "Shortest value is -> " << x.shortestSpan() << std::endl;
+	std::cout << "Longest value is -> " << x.longestSpan() << std::endl;
 
 	return 1;
-}
+}*/

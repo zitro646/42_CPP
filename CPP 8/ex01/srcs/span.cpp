@@ -83,16 +83,24 @@ void Span::addNumber(int x)
 
 static int span(int d1, int d2)
 {
-	int aux;
+	int aux_min;
+	int aux_max;
 	int i = 0;
 	
 	if (d1 < d2)
-		aux = d2;
+	{
+		aux_max = d2;
+		aux_min = d1;
+	}
 	else
-		aux = d1;
-	for (i ; aux <= d1 && aux <= d2; aux-- )
-		i++;
-	return (i);
+	{
+		aux_min = d2;
+		aux_max = d1;
+	}
+	//std::cout << "min : "<< aux_min << " | max : "<< aux_max<< std::endl;
+	for (int x = aux_min ; x <= aux_max; x++ )
+		i = x;
+	return (i - aux_min);
 
 }
 
@@ -100,20 +108,37 @@ int Span::shortestSpan(void)
 {
 	if (this->filled < 2)
 		this->StorageNotFullEnought();
-	int shortest = this->storage[0] - this->storage[1];
+	int shortest = span(this->storage[0],this->storage[1]);
 
 	for (int x = 0;x < (int)this->filled;x++)
 	{
 		for (int y = 0;y < (int)this->filled;y++)
 		{
-			if (shortest > (this ->storage[x] - this ->storage[y]) && x != y)
-				shortest = (this ->storage[x] - this ->storage[y]);
+			//std::cout << "x : "<< this->storage[x] << " | y : "<< this->storage[y] << " diff --> "<< span(this->storage[x],this->storage[y]) << std::endl;
+			if (shortest > span(this->storage[x],this->storage[y]) && x != y)
+				shortest = span(this->storage[x],this->storage[y]);
 		}
 	}
 	return shortest;	
 }
 
-int longestSpan(void);
+int Span::longestSpan(void)
+{
+	if (this->filled < 2)
+		this->StorageNotFullEnought();
+	int longest = span(this->storage[0],this->storage[1]);
+
+	for (int x = 0;x < (int)this->filled;x++)
+	{
+		for (int y = 0;y < (int)this->filled;y++)
+		{
+			//std::cout << "x : "<< this->storage[x] << " | y : "<< this->storage[y] << " diff --> "<< span(this->storage[x],this->storage[y]) << std::endl;
+			if (longest < span(this->storage[x],this->storage[y]) && x != y)
+				longest = span(this->storage[x],this->storage[y]);
+		}
+	}
+	return longest;	
+}
 
 //Getters
 unsigned int Span::getsize() const
