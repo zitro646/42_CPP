@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 13:37:55 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/29 16:05:27 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:23:50 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 Form::Form(std::string str, int sig , int exe) : name(str), sign(false), grade_sign(sig), grade_exec(exe)
 {
 	if (sig > 150 || exe > 150)
-		GradeTooLowException();
+		throw Form::GradeTooLowException();
 	if (sig < 1 || exe < 1)
-		GradeTooHighException();
+		throw Form::GradeTooHighException();
 	return ;
 }
 
@@ -49,19 +49,19 @@ Form & Form::operator=(const Form & form)
 	return (*this);
 }
 //Funciones que lanzan las excepciones
-void Form::GradeTooHighException(void)
+const char* Form::GradeTooHighException::what() const throw()
 {
-	throw std::invalid_argument("grade is to high");
+	return ( "Grade is to high");
 }
 
-void Form::GradeTooLowException(void)
+const char* Form::GradeTooLowException::what() const throw()
 {
-	throw std::invalid_argument("grade is to low");
+	return ( "Grade is to low");
 }
 
-void Form::NoSignException(void)
+const char* Form::NoSignException::what() const throw()
 {
-	throw std::invalid_argument("form isn't signed");
+	return ( "form isn't signed");
 }
 
 //Getters
@@ -89,7 +89,7 @@ bool Form::get_signed(void) const
 void Form::beSigned(const Bureaucrat &bureu)
 {
 	if (getGrade_Sign() < bureu.getGrade())
-		GradeTooLowException();
+		throw Form::GradeTooLowException();
 	else
 		this->sign = true;
 }
@@ -97,8 +97,8 @@ void Form::beSigned(const Bureaucrat &bureu)
 void Form::execute(Bureaucrat const & executor)
 {
 	if (getGrade_Exec() < executor.getGrade())
-		GradeTooLowException();
+		throw Form::GradeTooLowException();
 	if (this->get_signed() == false)
-		NoSignException();
+		throw Form::NoSignException();
 	this->executeAction();
 }

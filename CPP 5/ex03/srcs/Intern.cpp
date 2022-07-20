@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mortiz <mortiz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/01 00:55:36 by root              #+#    #+#             */
-/*   Updated: 2022/07/08 16:42:11 by mortiz           ###   ########.fr       */
+/*   Created: 2022/05/01 00:55:36 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/07/20 19:37:28 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
+
+//Canonic Functions
 
 Intern::Intern()
 {
@@ -34,6 +36,13 @@ Intern & Intern::operator=(const Intern & inter)
     return *this;
 }
 
+//Funciones que lanzan las excepciones
+const char* Intern::NoFormFound::what() const throw()
+{
+	return ( "No Form Found");
+}
+
+//Funciones
 Form* Intern::makeForm(std::string type ,std::string target)
 {
     Form *creation = NULL;
@@ -53,6 +62,7 @@ Form* Intern::makeForm(std::string type ,std::string target)
         if (creation != function[i])
             delete function[i];
     }
-    
+    if (creation == NULL)
+        throw Intern::NoFormFound();
     return creation;
 }

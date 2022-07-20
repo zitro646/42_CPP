@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mortiz <mortiz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/01 00:14:10 by root              #+#    #+#             */
-/*   Updated: 2022/07/08 16:39:44 by mortiz           ###   ########.fr       */
+/*   Created: 2022/05/01 00:14:10 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/07/20 19:34:40 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ class Form;
 
 class Intern
 {
+    private:
+        class NoFormFound : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
     public:
         Intern();
         ~Intern();

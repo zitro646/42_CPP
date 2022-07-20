@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 21:59:17 by root              #+#    #+#             */
-/*   Updated: 2022/04/30 23:12:06 by root             ###   ########.fr       */
+/*   Updated: 2022/07/20 18:49:40 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
 void RobotomyRequestForm::execute(Bureaucrat const & executor)
 {
 	if (getGrade_Exec() < executor.getGrade())
-		GradeTooLowException();
+		throw Form::GradeTooLowException();
 	if (this->get_signed() == false)
-		NoSignException();
+		throw Form::NoSignException();
     this->executeAction();
 }
 

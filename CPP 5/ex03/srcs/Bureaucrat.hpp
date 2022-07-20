@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 13:56:26 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/29 15:58:56 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:22:13 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,16 @@ class Bureaucrat
 	private:
 		const std::string name;
 		int grade;
-		void GradeTooHighException(void);
-		void GradeTooLowException(void);
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 	public:
 		Bureaucrat(std::string str, int i);
 		~Bureaucrat();

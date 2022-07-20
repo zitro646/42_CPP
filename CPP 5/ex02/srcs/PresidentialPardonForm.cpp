@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 23:16:24 by root              #+#    #+#             */
-/*   Updated: 2022/04/30 23:30:19 by root             ###   ########.fr       */
+/*   Updated: 2022/07/20 18:49:16 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ PresidentialPardonForm & PresidentialPardonForm::operator=(const PresidentialPar
 void PresidentialPardonForm::execute(Bureaucrat const & executor)
 {
 	if (getGrade_Exec() < executor.getGrade())
-		GradeTooLowException();
+		throw Form::GradeTooLowException();
 	if (this->get_signed() == false)
-		NoSignException();
+		throw Form::NoSignException();
     this->executeAction();
 }
 

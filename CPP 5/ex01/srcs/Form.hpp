@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 13:21:06 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/29 16:10:05 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:21:56 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,16 @@ class Form
 		bool				sign;
 		const int			grade_sign;
 		const int			grade_exec;
-		void GradeTooHighException(void);
-		void GradeTooLowException(void);
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 	public:
 		Form(std::string str, int sig , int exe);
 		~Form();

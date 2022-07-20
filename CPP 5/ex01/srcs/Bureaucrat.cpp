@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 13:56:23 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/29 16:04:00 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:21:17 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,14 @@ Bureaucrat Bureaucrat::operator=(const Bureaucrat & bureu)
 }
 
 //Funciones que lanzan las excepciones
-void Bureaucrat::GradeTooHighException(void)
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	std::cout << "Grade is too high" <<std::endl;
-	throw std::invalid_argument("Grade to high");
+	return ( "Grade is to high");
 }
 
-void Bureaucrat::GradeTooLowException(void)
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	std::cout << "Grade is too low" <<std::endl;
-	throw std::invalid_argument("Grade to low");
+	return ( "Grade is to low");
 }
 
 //Getters 
@@ -68,7 +66,7 @@ int Bureaucrat::getGrade(void) const
 void Bureaucrat::increaseGrade(void)
 {
 	if (getGrade() - 1 < 1)
-		GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	else
 		this->grade--;
 }
@@ -76,7 +74,7 @@ void Bureaucrat::increaseGrade(void)
 void Bureaucrat::decreaseGrade(void)
 {
 	if (getGrade() + 1 > 150)
-		GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	else
 		this->grade++;
 }

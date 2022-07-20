@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 13:56:38 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/29 13:19:50 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 17:46:59 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,37 +28,30 @@ int main (void)
 	}
 	catch (std::exception & e)
 	{
-		std::cout<< "I somehow have failed, probably it was beacuse of those pesky grades"<<std::endl;
+		std::cout<< e.what() <<std::endl;
 	}
+	std::cout<< "- - - - - - - - - - - - - - - - -"<<std::endl;
+	std::cout<< "- - - Going to fail  - - - - - -"<<std::endl;
 	std::cout<< "- - - - - - - - - - - - - - - - -"<<std::endl;
 	try
 	{
 		Bureaucrat bureu("Juan",150);
-
-		std::cout<< bureu <<std::endl;
-		for (int i = 150; i > 1; i--)
-			bureu.increaseGrade();
-		std::cout<< bureu <<std::endl;
+		bureu.decreaseGrade();
 		
 	}
 	catch (std::exception & e)
 	{
-		std::cout<< "I somehow have failed, probably it was beacuse of those pesky grades"<<std::endl;
+		std::cout<< e.what() <<std::endl;
 	}
 	std::cout<< "- - - - - - - - - - - - - - - - -"<<std::endl;
 	try
 	{
-		Bureaucrat bureu("Pedro",150);
-
-		std::cout<< bureu <<std::endl;
-		for (int i = 1; i < 150; i++)
-			bureu.increaseGrade();
-		std::cout<< bureu <<std::endl;
-		
+		Bureaucrat bureu("Pedro",1);
+		bureu.increaseGrade();
 	}
 	catch (std::exception & e)
 	{
-		std::cout<< "I somehow have failed, probably it was beacuse of those pesky grades"<<std::endl;
+		std::cout<< e.what() <<std::endl;
 	}
 	return (0);
 }
