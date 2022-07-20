@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 15:13:05 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/28 16:45:43 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:44:36 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ Character::Character(const Character & cha)
 
 Character::~Character()
 {
+	std::cout<< "borro character " << this->getName() <<std::endl;
 	for (int i = 0;i < this->inv_tam; i++)
 		delete this->inventory[i];
 	return;
@@ -46,8 +47,11 @@ Character & Character::operator=(const Character &cha)
 	for (int i = 0; i < 4 ; i++)
 		delete this->inventory[i];
 	for (int i = 0; i < 4 ; i++)
-		this->inventory[i] = NULL;
-	this->inv_tam = 0;
+	{
+		this->inventory[i] = cha.inventory[i]->clone();
+		std::cout<< "this ->  " << this->inventory[i]->getType() <<std::endl;
+	}
+	this->inv_tam = cha.inv_tam;
 	return (*this);
 }
 

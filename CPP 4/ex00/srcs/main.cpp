@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:44:57 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/28 16:20:55 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:55:46 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,26 @@
 
 int main (void)
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const WrongAnimal* n = new WrongCat();
-	//atexit(leaks);
+	{
+		Animal* animal = new Animal();
+		Animal* dog = new Dog();
+		Animal* cat = new Cat();
+		WrongAnimal* wrongcat = new WrongCat();
+		//atexit(leaks);
 
-	std::cout << "The Dog should be a "<< j->getType() << " " << std::endl;
-	std::cout << "The Cat should be a " << i->getType() << " " << std::endl;
-	std::cout << "This animal should be a " << meta->getType() << " " << std::endl;
-	std::cout << "This animal should be a " << n->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	n->makeSound();
-
-	delete j;
-	j = i;
-
-	delete meta;
-	delete i;
-	delete n;
-	//meta->makeSound();
+		std::cout << "The Dog should be a "<< dog->getType() << " " << std::endl;
+		std::cout << "The Cat should be a " << cat->getType() << " " << std::endl;
+		std::cout << "This animal should be a " << animal->getType() << " " << std::endl;
+		std::cout << "This animal should be a " << wrongcat->getType() << " " << std::endl;
+		cat->makeSound(); //will output the cat sound!
+		dog->makeSound();
+		wrongcat->makeSound();
+		std::cout << " ___ Deep Copy ____ " << std::endl;
+		*dog = *cat;
+		std::cout << "The Dog changed into a "<< dog->getType() << " " << std::endl;
+		delete dog;
+		delete animal;
+		delete cat;
+		delete wrongcat;
+	}
 }

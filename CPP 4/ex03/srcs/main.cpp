@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:44:57 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/28 17:07:11 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:53:21 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int main (void)
 		AMateria *heal3 = heal->clone();
 		Character *character = new Character("Miguel"); 
 		Character *character2 = new Character("Test");
+		
 		std::cout << "Character "<<character->getName() <<" starts equiping himself" << std::endl;
 		character->equip(ice);
 		character->equip(ice2);
@@ -40,12 +41,12 @@ int main (void)
 		character->equip(heal3);
 		
 		*character2 = *character; 
-		std::cout << std::endl << "Now that character "<<character->getName() <<" is ready he's going to use ... " << std::endl;
-		character->use(0,*character2);
-		character->use(1,*character2);
-		character->use(2,*character2);
-		character->use(3,*character2);
-		character->use(5,*character2);
+		std::cout << std::endl << "Now that character "<<character2->getName() <<" is ready he's going to use ... " << std::endl;
+		character2->use(0,*character2);
+		character2->use(1,*character2);
+		character2->use(2,*character2);
+		character2->use(3,*character2);
+		character2->use(5,*character2);
 		character2->use(0,*character);
 		std::cout << std::endl << "Now that he has used everything he's going to unequip it" << std::endl;
 		character->unequip(3);
@@ -53,6 +54,7 @@ int main (void)
 		character->unequip(1);
 		character->unequip(0);
 		character->unequip(0);
+		std::cout << std::endl << "- - - - - - end testing - - - - - - " << std::endl;
 		delete character;
 		delete character2;
 		delete ice;
@@ -63,21 +65,21 @@ int main (void)
 	}
 	std::cout << std::endl << "- - - - - - - - - - - - - - - - - " << std::endl;
 	{
-		IMateriaSource* src = new MateriaSource();
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
-		ICharacter* me = new Character("me");
-		AMateria* tmp;
-		tmp = src->createMateria("ice");
-		me->equip(tmp);
-		tmp = src->createMateria("cure");
-		me->equip(tmp);
-		ICharacter* bob = new Character("bob");
-		me->use(0, *bob);
-		me->use(1, *bob);
-		delete bob;
-		delete me;
-		delete src;
-		return 0; 
+		// IMateriaSource* src = new MateriaSource();
+		// src->learnMateria(new Ice());
+		// src->learnMateria(new Cure());
+		// ICharacter* me = new Character("me");
+		// AMateria* tmp;
+		// tmp = src->createMateria("ice");
+		// me->equip(tmp);
+		// tmp = src->createMateria("cure");
+		// me->equip(tmp);
+		// ICharacter* bob = new Character("bob");
+		// me->use(0, *bob);
+		// me->use(1, *bob);
+		// delete bob;
+		// delete me;
+		// delete src;
+		// return 0; 
 	}
 }

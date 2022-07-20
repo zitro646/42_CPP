@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 13:41:34 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/28 13:36:56 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:38:30 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ Brain::Brain(const Brain &brain)
 
 Brain& Brain::operator=(Brain const & brain)
 {
+	std::cout<<"Brain copied"<<std::endl;
+	if (&brain == this)
+		return *this;
 	int i;
-
+	
 	i = 0;
 	while (i < 100)
 	{

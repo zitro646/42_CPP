@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:55:25 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/28 16:21:20 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:13:46 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ Animal::Animal(const Animal & ani)
 
 Animal& Animal::operator=(Animal const & ani)
 {
+	if (&ani == this)
+		return *this;
 	this->type = ani.type;
 	return (*this);
 }

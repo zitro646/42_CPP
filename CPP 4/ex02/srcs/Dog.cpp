@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:55:25 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/25 14:38:34 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:02:14 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,12 @@ Dog::~Dog()
 
 Dog& Dog::operator=(Dog const & ani)
 {
+	if (&ani == this)
+		return *this;
 	this->type = ani.type;
+	delete this->brain;
+	this->brain = new Brain();
+	*this->brain = *ani.brain;
 	return (*this);
 }
 

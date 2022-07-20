@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 13:32:03 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/28 13:24:25 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:14:14 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ WrongCat::~WrongCat()
 
 WrongCat& WrongCat::operator=(WrongCat const & ani)
 {
+	if (&ani == this)
+		return *this;
 	this->type = ani.type;
 	return (*this);
+}
+
+void WrongCat::makeSound(void) const
+{
+	std::cout << "Meow meowed the wrongcat"<< std::endl;
 }

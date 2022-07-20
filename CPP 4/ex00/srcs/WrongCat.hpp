@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 13:32:19 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/28 13:24:12 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:04:35 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ public:
 	WrongCat(const WrongCat & w_cat);
 	~WrongCat();
 	WrongCat& operator=(WrongCat const & clap);
+	void makeSound(void) const;
 };
 
 

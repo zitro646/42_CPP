@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:55:25 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/04/25 14:36:30 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:38:57 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ Cat::~Cat()
 
 Cat& Cat::operator=(Cat const & ani)
 {
+	if (&ani == this)
+		return *this;
 	this->type = ani.type;
+	delete this->brain;
+	this->brain = new Brain();
+	*this->brain = *ani.brain;
 	return (*this);
 }
 
