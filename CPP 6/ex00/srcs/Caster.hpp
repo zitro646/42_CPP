@@ -20,11 +20,12 @@
 #define DOUBLE_TYPE 4
 
 
-#include<iomanip>
-#include<iostream>
+#include <iomanip>
+#include <iostream>
 #include <limits>
 #include <wchar.h>
-#include <math.h> 
+#include <math.h>
+
 
 class Caster
 {

@@ -85,11 +85,11 @@ void Caster::displayChar(void)
 	if (this->type_input == ERROR_TYPE)
 		std::cout<< "Char : imposible" <<std::endl;
 	else if (this->type_input == CHAR_TYPE)
-		std::cout<< "Char : "<<this->str <<std::endl;
+		std::cout<< "Char : " << static_cast<char>(value) <<std::endl;
 	else
 	{
 		if (value_2 - double(value) == 0 && isprint(value) == 1)
-			std::cout<< "Char : "<< char(value) <<std::endl;
+			std::cout<< "Char : "<< static_cast<char>(value) <<std::endl;
 		else
 			std::cout<< "Char : Non Printable" <<std::endl;
 	}
@@ -105,13 +105,13 @@ void Caster::displayInteger(void)
 	if (this->type_input == ERROR_TYPE)
 		std::cout<< "Int : imposible" <<std::endl;
 	else if (this->type_input == CHAR_TYPE)
-		std::cout<< "Int : "<< int(this->str[0])<<std::endl;
+		std::cout<< "Int : "<< static_cast<int>(value)<<std::endl;
 	else
 	{
 		if ( value_2 < std::numeric_limits<int>::min() || value_2 > std::numeric_limits<int>::max() )
 			std::cout<< "Int : overlimit " <<std::endl;
 		else 
-			std::cout<< "Int : " << value <<std::endl;
+			std::cout<< "Int : " << static_cast<int>(value) <<std::endl;
 	}
 }
 
@@ -136,15 +136,13 @@ int Caster::float_inff(void)
 
 void Caster::displayFloat(void)
 {
-	int value;
-	float value_2;
+	float value;
 	
-	value = atoi(this->str.c_str());
-	value_2 = atof(this->str.c_str());
+	value = atof(this->str.c_str());
 	if (this->type_input == ERROR_TYPE)
 		std::cout<< "Float : nanf" <<std::endl;
 	else if (this->type_input == CHAR_TYPE)
-		std::cout<< "Float : "<< float(this->str[0]) << ".0f" <<std::endl;
+		std::cout<< "Float : "<< static_cast<float>(value) << ".0f" <<std::endl;
 	else
 	{
 		if (float_inff() != 0)
@@ -157,10 +155,10 @@ void Caster::displayFloat(void)
 				std::cout<< "Float : error (HOW?)" <<std::endl;
 		}
 		else 
-			if (value_2 == floor(value_2))
-				std::cout<< "Float : " << value_2 << ".0f" <<std::endl;
+			if (value == floor(value))
+				std::cout<< "Float : "<< static_cast<float>(value) << ".0f"<<std::endl;
 			else
-			 	std::cout<< "Float : " << value_2 << "f" <<std::endl;
+			 	std::cout<< "Float : "<< static_cast<float>(value) << "f"<<std::endl;
 	}
 }
 
@@ -185,11 +183,9 @@ int Caster::double_inff(void)
 
 void Caster::displayDouble(void)
 {
-	int value;
-	double value_2;
-	
-	value = atoi(this->str.c_str());
-	value_2 = atof(this->str.c_str());
+	double value;
+
+	value = atof(this->str.c_str());
 	if (this->type_input == ERROR_TYPE)
 		std::cout<< "Double : nan" <<std::endl;
 	else if (this->type_input == CHAR_TYPE)
@@ -206,10 +202,10 @@ void Caster::displayDouble(void)
 				std::cout<< "Double : error (HOW?)" <<std::endl;
 		}
 		else 
-			if (value_2 == floor(value_2))
-				std::cout<< "Double : " << value_2 << ".0" <<std::endl;
+			if (value == floor(value))
+				std::cout<< "Double : "<< static_cast<double>(value) << ".0"<<std::endl;
 			else
-			 	std::cout<< "Double : " << value_2 <<std::endl;
+			 	std::cout<< "Double : "<< static_cast<double>(value) << std::endl;
 	}
 }
 
