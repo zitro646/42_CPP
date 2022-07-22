@@ -16,8 +16,7 @@
 #include "Base_B.hpp"
 #include "Base_C.hpp"
 
-#include<iostream>
-#include <sstream>
+#include <limits>
 
 /*void leaks(void)
 {

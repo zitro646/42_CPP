@@ -16,6 +16,11 @@
 
 #include<iomanip>
 #include<iostream>
+#include <iostream>
+#include <sstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctime>
 
 class Base
 {	
