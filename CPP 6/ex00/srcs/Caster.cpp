@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 15:27:57 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/05 01:31:35 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/24 13:42:52 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ int	Caster::identify_type(std::string str)
 			i++;
 		}
 		if ((str[i] == 'f' || str[i] == 'F') && result_type == DOUBLE_TYPE)
-			result_type = FLOAT_TYPE;
+			if (str[i - 1] == '.')
+				result_type = ERROR_TYPE;
+			else
+				result_type = FLOAT_TYPE;
 		else if (str[i] != '\0' || str[i - 1] == '.' || (result_type == FLOAT_TYPE && str[i + 1] != '\0'))
 			result_type = ERROR_TYPE;
 			
@@ -85,10 +88,10 @@ void Caster::displayChar(void)
 	if (this->type_input == ERROR_TYPE)
 		std::cout<< "Char : imposible" <<std::endl;
 	else if (this->type_input == CHAR_TYPE)
-		std::cout<< "Char : " << static_cast<char>(value) <<std::endl;
+		std::cout<< "Char : " << static_cast<char>(this->str[0]) <<std::endl;
 	else
 	{
-		if (value_2 - double(value) == 0 && isprint(value) == 1)
+		if (value_2 - static_cast<double>(value) == 0 && isprint(value) == 1)
 			std::cout<< "Char : "<< static_cast<char>(value) <<std::endl;
 		else
 			std::cout<< "Char : Non Printable" <<std::endl;
@@ -105,7 +108,7 @@ void Caster::displayInteger(void)
 	if (this->type_input == ERROR_TYPE)
 		std::cout<< "Int : imposible" <<std::endl;
 	else if (this->type_input == CHAR_TYPE)
-		std::cout<< "Int : "<< static_cast<int>(value)<<std::endl;
+		std::cout<< "Int : "<< static_cast<int>(this->str[0]) <<std::endl;
 	else
 	{
 		if ( value_2 < std::numeric_limits<int>::min() || value_2 > std::numeric_limits<int>::max() )
@@ -142,7 +145,7 @@ void Caster::displayFloat(void)
 	if (this->type_input == ERROR_TYPE)
 		std::cout<< "Float : nanf" <<std::endl;
 	else if (this->type_input == CHAR_TYPE)
-		std::cout<< "Float : "<< static_cast<float>(value) << ".0f" <<std::endl;
+		std::cout<< "Float : "<< static_cast<float>(this->str[0]) << ".0f" <<std::endl;
 	else
 	{
 		if (float_inff() != 0)
@@ -189,7 +192,7 @@ void Caster::displayDouble(void)
 	if (this->type_input == ERROR_TYPE)
 		std::cout<< "Double : nan" <<std::endl;
 	else if (this->type_input == CHAR_TYPE)
-		std::cout<< "Double : "<< double(this->str[0])<< ".0" <<std::endl;
+		std::cout<< "Double : "<< static_cast<double>(this->str[0]) << ".0" <<std::endl;
 	else
 	{
 		if (double_inff() != 0)
