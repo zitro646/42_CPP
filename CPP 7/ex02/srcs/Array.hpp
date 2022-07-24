@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 16:01:52 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/12 01:50:20 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/24 16:51:47 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
 template<class T>
 class Array
 {
+	private:
+		unsigned int size;
+		T * storage;
+		
+		class OutofBoundsException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 	public:
 		Array(void);
 		Array(unsigned int s);
@@ -29,12 +38,6 @@ class Array
 		unsigned int getsize(void) const ;
 		T getstoragepos(int x) const ;
 		T *getstoragepointer(void) const;
-	
-	private:
-		unsigned int size;
-		T * storage;
-		
-		void OutofBoundsException(void) const;
 };
 
 template<typename T>

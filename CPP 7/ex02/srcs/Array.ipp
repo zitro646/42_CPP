@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 01:30:29 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/12 01:40:06 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/07/24 16:57:11 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ template<typename T>
 T & Array<T>::operator[](int i)
 {
 	if (i < 0 || i >= (int)this->size)
-		OutofBoundsException();
+		throw Array<T>::OutofBoundsException();
 	return this->storage[i];
 }
 
@@ -73,20 +73,22 @@ template<typename T>
 T Array<T>::getstoragepos(int x) const 
 {
 	if (x < 0 || x >= (int)this->size)
-		OutofBoundsException();
+		throw Array<T>::OutofBoundsException();
 	return this->storage[x];
 }
 
 template<typename T>
-T * Array<T>::getstoragepointer(void) const {return this->storage;}
+T * Array<T>::getstoragepointer(void) const 
+{
+	return this->storage;
+}
 
 
 
 template<typename T>
-void Array<T>::OutofBoundsException(void) const
+const char* Array<T>::OutofBoundsException::what() const throw()
 {
-	std::cout << "Out of bounds" <<std::endl;
-	throw std::invalid_argument("Out of bounds");
+	return ( "Out of Bounds Exception");
 }
 
 template<typename T>
