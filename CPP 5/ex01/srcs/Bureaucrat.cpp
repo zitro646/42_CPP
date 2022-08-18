@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 13:56:23 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/20 18:21:17 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:25:14 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 Bureaucrat::Bureaucrat(std::string str, int i) : name(str)
 {
 	if (i > 150)
-		GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	if (i < 1)
-		GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	this->grade = i;
 	std::cout << this->name << " was created with a grade of "<< i<<std::endl;
 	return;
