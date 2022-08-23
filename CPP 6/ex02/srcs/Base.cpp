@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:45:32 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/06 15:47:01 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/08/23 16:17:00 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,11 @@ Base Base::operator=(const Base & base)
 void Base::info(void) const
 {
 	std::cout << "Im origin base" << std::endl;
+}
+
+std::ostream &operator<<(std::ostream& os, const Base &base)
+{
+	(void)base;
+	os << "Base is here ";
+	return (os);
 }
