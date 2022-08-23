@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mutantstack.ipp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mortiz <mortiz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:55:33 by mortiz            #+#    #+#             */
-/*   Updated: 2022/07/16 00:14:14 by mortiz           ###   ########.fr       */
+/*   Updated: 2022/08/23 19:11:30 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mutantstack.hpp"
 
 template<typename T>
-//Mutantstack<T>::Mutantstack(void) : std::stack<T>
 Mutantstack<T>::Mutantstack(void) : std::stack<T>()
 {
 	return;

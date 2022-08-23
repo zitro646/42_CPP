@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 13:18:03 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/13 17:05:03 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/08/23 19:00:45 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int main()
 {
 	Span sp (5);
 	sp.addNumber(5);
-	sp.addNumber(3);
 	sp.addNumber(17);
-	sp.addNumber(9);
+	sp.addNumber(7);
 	sp.addNumber(11);
+	sp.addNumber(1);
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 }

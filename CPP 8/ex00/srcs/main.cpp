@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 13:18:03 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/13 14:00:33 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/08/23 18:23:11 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 int main (void)
 {
-	int test[4];
-	//double test2[4];
+	std::vector<int> test;
 	
-	test[0] = 14;
-	test[1] = 42;
-	test[2] = 98;
-	test[3] = 67;
+	for (int i=0;i<20;i++)
+		test.push_back(i);
 	
-	std::cout << "test -> " << ::easyfind(test , 98)<< std::endl;
+	std::cout << "search 2 fail -> " << ::easyfind(test , 98)<< std::endl;
+	std::cout << "search -> " << ::easyfind(test , 5)<< std::endl;
 	
 
 	return 1;

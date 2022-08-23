@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 13:18:12 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/13 16:55:46 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/08/23 19:03:58 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,39 @@
 
 #include<iomanip>
 #include<iostream>
-
+#include<vector>
 
 class Span
 {
 	private:
 	//Variables
-	int *storage;
-	unsigned int size;
-	unsigned int filled;
+	std::vector<int> _vector;
+	// int *storage;
+	unsigned int _size;
+	// unsigned int filled;
 	
 	//Exceptions
-	void OutofBoundsException(void) const;
-	void StorageFullException(void) const;
-	void StorageNotFullEnought(void) const;
+	class OutofBoundsException : public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
+	class StorageFullException : public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
+	class StorageNotFullEnought : public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
 
+	//Private Canonic
+	Span();
+	
 	public:
 	//Canonic Class
-	Span();
 	Span(unsigned int s);
 	Span(Span &spn);
 	~Span();
