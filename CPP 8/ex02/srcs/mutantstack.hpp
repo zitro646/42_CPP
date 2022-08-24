@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:56:03 by mortiz            #+#    #+#             */
-/*   Updated: 2022/08/23 19:17:05 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/08/24 13:07:38 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,40 @@
 #include<iomanip>
 #include<iostream>
 # include <stack>
+# include <vector>
 
-template<class T = int>
-class Mutantstack : public std::stack<T>
+template<class T >
+class MutantStack : public std::stack<T>
 {
+	public:
 	typedef typename std::stack<T>::container_type::iterator iterator;
 	typedef typename std::stack<T>::container_type::const_iterator const_iterator;
-	typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
-	typedef typename std::stack<T>::container_type::reverse_iterator const_reverse_iterator;
+	typedef typename std::stack<T>::container_type::reverse_iterator r_iterator;
+	typedef typename std::stack<T>::container_type::reverse_iterator const_riterator;
 	
-	public:
+	
 	//Canonic Class
-	Mutantstack();
-	Mutantstack(Mutantstack &spn);
-	~Mutantstack();
-	Mutantstack &operator=(const Mutantstack &spn);
+	MutantStack();
+	MutantStack(MutantStack &spn);
+	~MutantStack();
+	MutantStack &operator=(const MutantStack &spn);
+
+	iterator begin(void) { return this->c.begin(); }
+	iterator end(void) { return this->c.end(); }
+
+	const_iterator begin(void) const { return this->c.begin(); }
+	const_iterator end(void) const { return this->c.end(); }
+
+	r_iterator rbegin(void) { return this->c.rbegin(); }
+	r_iterator rend(void) { return this->c.rend(); }
+
+	const_riterator rbegin(void) const { return this->c.rbegin(); }
+	const_riterator rend(void) const { return this->c.rend(); }
 
 };
 
 //Output
 template<typename T>
-std::ostream& operator<<(std::ostream& os, const Mutantstack<T> &sp);
+std::ostream& operator<<(std::ostream& os, const MutantStack<T> &sp);
 
 #endif

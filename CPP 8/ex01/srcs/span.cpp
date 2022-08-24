@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 13:48:08 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/08/23 19:05:21 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/08/24 13:19:35 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ Span::Span(Span &spn) : _size(0)
 
 Span::~Span()
 {
-	// delete this->storage;
 	return;
 }
 
@@ -39,13 +38,8 @@ Span & Span::operator=(const Span &spn)
 {
 	if (this == &spn)
 		return *this;
-	// delete this->storage;
 	this->_size = spn._size;
 	this->_vector = spn._vector;
-	// this->filled = spn.filled;
-	// this->storage = new int[this->size];
-	// for (int x = 0; x < (int)this->size; x++)
-	// 	this->storage[x] = spn.storage[x];
 	return *this;
 }
 

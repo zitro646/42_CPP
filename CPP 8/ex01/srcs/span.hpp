@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 13:18:12 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/08/23 19:03:58 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/08/24 13:19:37 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ class Span
 	private:
 	//Variables
 	std::vector<int> _vector;
-	// int *storage;
 	unsigned int _size;
-	// unsigned int filled;
 	
 	//Exceptions
 	class OutofBoundsException : public std::exception
