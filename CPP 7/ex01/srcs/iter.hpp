@@ -6,14 +6,34 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 12:43:30 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/07/07 16:01:40 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:48:15 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<iomanip>
 #include<iostream>
 
+//Tester
+class Awesome {
+	public: Awesome( void ) : _n( 42 ) { return; } 
+	int get( void ) const { return this->_n; } 
+	private: int _n; 
+}; 
 
+std::ostream&operator<<(std::ostream &o, Awesome const &rhs)
+{
+	o<<rhs.get();
+	return o;
+} 
+
+template<typename T>
+void print(T &x)
+{	
+	std::cout << x << std::endl;	
+}
+
+
+//Functions
 template<typename T>
 void add_one(T &n1)
 {	
