@@ -10,13 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef EASYFIND
+# define EASYFIND
+
 #include<iomanip>
+#include <algorithm> 
 #include<iostream>
 #include <vector>
 
-#ifndef SEARCH_ERR
-#define SEARCH_ERR -2147483648
-#endif
+
+struct NotFoundException : public std::exception
+{
+	const char * what () const throw ()
+    {
+    	return "Iter Not Found";
+    }
+};
 
 template<typename T>
 int easyfind (T value1, int value2)
@@ -26,5 +35,7 @@ int easyfind (T value1, int value2)
 	iter = std::find(value1.begin(), value1.end(), value2);
 	if (value2 == *iter)
 		return *iter;
-	return SEARCH_ERR;
+	throw NotFoundException();
 }
+
+#endif

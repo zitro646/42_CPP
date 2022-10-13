@@ -19,9 +19,17 @@ int main (void)
 	for (int i=0;i<20;i++)
 		test.push_back(i);
 	
-	std::cout << "search 2 fail -> " << ::easyfind(test , 98)<< std::endl;
-	std::cout << "search -> " << ::easyfind(test , 5)<< std::endl;
-	
+	for (int i=-5;i<25;i++)
+	{
+		try
+		{
+			std::cout << "search -> " << ::easyfind(test , i)<< std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << "Exception found -> " << e.what() << '\n';
+		}
+	}	
 
 	return 1;
 }
