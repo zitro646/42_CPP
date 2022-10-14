@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 13:48:08 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/08/24 13:19:35 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/10/14 14:58:27 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,42 +67,24 @@ void Span::addNumber(int x)
 	std::cout << "Number added to storage "<< std::endl;
 }
 
-static int span(int d1, int d2)
-{
-	int aux_min;
-	int aux_max;
-	int i = 0;
-	
-	if (d1 < d2)
-	{
-		aux_max = d2;
-		aux_min = d1;
-	}
-	else
-	{
-		aux_min = d2;
-		aux_max = d1;
-	}
-	//std::cout << "min : "<< aux_min << " | max : "<< aux_max<< std::endl;
-	for (int x = aux_min ; x <= aux_max; x++ )
-		i = x;
-	return (i - aux_min);
-
-}
-
 int Span::shortestSpan(void)
 {
+	int aux;
+	int shortest;
+	std::vector<int>::iterator iterator;
+	std::vector<int>::iterator iterator_next;
+
 	if (this->_vector.size() < 2)
 		throw Span::StorageNotFullEnought();
-	int shortest = span(this->_vector[0],this->_vector[1]);
 
-	for (int x = 0;x < (int)this->_vector.size();x++)
+	shortest = std::abs(this->_vector.begin() - this->_vector.end());
+	for (iterator = this->_vector.begin();iterator != this->_vector.end();iterator++)
 	{
-		for (int y = 0;y < (int)this->_vector.size();y++)
+		for (iterator_next = this->_vector.begin();iterator_next != this->_vector.end();iterator_next++)
 		{
-			//std::cout << "x : "<< this->storage[x] << " | y : "<< this->storage[y] << " diff --> "<< span(this->storage[x],this->storage[y]) << std::endl;
-			if (shortest > span(this->_vector[x],this->_vector[y]) && x != y)
-				shortest = span(this->_vector[x],this->_vector[y]);
+			aux = std::abs(*iterator - *iterator_next);
+			if (shortest > aux && iterator != iterator_next)
+				shortest = aux;
 		}
 	}
 	return shortest;	
@@ -110,20 +92,25 @@ int Span::shortestSpan(void)
 
 int Span::longestSpan(void)
 {
+	int aux;
+	int longest;
+	std::vector<int>::iterator iterator;
+	std::vector<int>::iterator iterator_next;
+
 	if (this->_vector.size() < 2)
 		throw Span::StorageNotFullEnought();
-	int longest = span(this->_vector[0],this->_vector[1]);
 
-	for (int x = 0;x < (int)this->_vector.size();x++)
+	longest = std::abs(this->_vector.begin() - this->_vector.end());
+	for (iterator = this->_vector.begin();iterator != this->_vector.end();iterator++)
 	{
-		for (int y = 0;y < (int)this->_vector.size();y++)
+		for (iterator_next = this->_vector.begin();iterator_next != this->_vector.end();iterator_next++)
 		{
-			//std::cout << "x : "<< this->storage[x] << " | y : "<< this->storage[y] << " diff --> "<< span(this->storage[x],this->storage[y]) << std::endl;
-			if (longest < span(this->_vector[x],this->_vector[y]) && x != y)
-				longest = span(this->_vector[x],this->_vector[y]);
+			aux = std::abs(*iterator - *iterator_next);
+			if (longest < aux)
+				longest = aux;
 		}
 	}
-	return longest;	
+	return longest;
 }
 
 //Getters

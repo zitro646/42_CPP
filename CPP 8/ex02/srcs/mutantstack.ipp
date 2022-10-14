@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 17:55:33 by mortiz            #+#    #+#             */
-/*   Updated: 2022/08/24 12:42:33 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:08:34 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ MutantStack<T> & MutantStack<T>::operator=(const MutantStack<T> &mutant)
 {
 	 if (this == &mutant)
             return (*this);
-    std::stack<T>::operator=(mutant);
+    std::stack<T>::operator = (mutant);
     return (*this);
 }
