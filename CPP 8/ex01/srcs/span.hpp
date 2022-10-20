@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 13:18:12 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/08/24 13:19:37 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:51:06 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Span
 	//Variables
 	std::vector<int> _vector;
 	unsigned int _size;
+	unsigned int _actual_size;
 	
 	//Exceptions
 	class OutofBoundsException : public std::exception
@@ -53,6 +54,7 @@ class Span
 
 	//Functions
 	void addNumber(int x);
+	void addmultipleNumbers(std::vector<int>::iterator start, std::vector<int>::iterator end);
 	int shortestSpan(void);
 	int longestSpan(void);
 	

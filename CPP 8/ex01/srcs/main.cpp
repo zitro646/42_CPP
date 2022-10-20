@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 13:18:03 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/10/14 14:56:42 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:00:14 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,27 @@
 
 int main()
 {
-	
+	std::vector<int> prueba;
+	for (int i = 1; i <= 10;i++)
+		prueba.push_back(i);
+	try
+	{
+		Span sp (11);
+		sp.addmultipleNumbers(prueba.begin(),prueba.end());
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "Exception found -> " << e.what() << '\n';
+	}
+	std::cout << "_______________________________" << '\n';
 	try
 	{
 		Span sp (4);
-		sp.addNumber(5);
+		sp.addNumber(-3);
+		sp.addNumber(4);
 		sp.addNumber(17);
-		sp.addNumber(10);
-		sp.addNumber(2);
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 	}
@@ -47,9 +60,6 @@ int main()
 		sp.addNumber(7);
 		sp.addNumber(7);
 		sp.addNumber(7);
-		sp.addNumber(7);
-		sp.addNumber(7);
-		std::cout << sp.shortestSpan() << std::endl;
 	}
 	catch(const std::exception& e)
 	{

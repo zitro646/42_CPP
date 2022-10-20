@@ -6,24 +6,24 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 13:48:08 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/10/14 14:58:27 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:57:20 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "span.hpp"
 
 //Canonial Class
-Span::Span() : _size(0)
+Span::Span() : _size(0) , _actual_size(0)
 {
 	return;
 }
 
-Span::Span(unsigned int s): _size(s)
+Span::Span(unsigned int s): _size(s) , _actual_size(0)
 {
 	return;
 }
 
-Span::Span(Span &spn) : _size(0)
+Span::Span(Span &spn) : _size(0) , _actual_size(0)
 {
 	spn = *this;
 	return;
@@ -40,6 +40,7 @@ Span & Span::operator=(const Span &spn)
 		return *this;
 	this->_size = spn._size;
 	this->_vector = spn._vector;
+	this->_actual_size = spn._actual_size;
 	return *this;
 }
 
@@ -64,7 +65,25 @@ void Span::addNumber(int x)
 	if (this->_vector.size() >= this->_size)
 		throw Span::StorageFullException();
 	this->_vector.push_back(x);
+	this->_actual_size++;
 	std::cout << "Number added to storage "<< std::endl;
+}
+
+void Span::addmultipleNumbers(std::vector<int>::iterator start, std::vector<int>::iterator end)
+{
+	int counter;
+
+	counter = 0;
+	for (std::vector<int>::iterator aux = start; aux != end;aux++)
+		counter++;
+	if (this->_vector.size() + counter >= this->_size)
+		throw Span::StorageFullException();
+	for (std::vector<int>::iterator aux = start; aux != end;aux++)
+	{
+		this->_vector.push_back(*aux);
+		this->_actual_size++;
+	}
+	std::cout << "Multiple numbers added to storage "<< std::endl;
 }
 
 int Span::shortestSpan(void)
@@ -77,15 +96,18 @@ int Span::shortestSpan(void)
 	if (this->_vector.size() < 2)
 		throw Span::StorageNotFullEnought();
 
-	shortest = std::abs(this->_vector.begin() - this->_vector.end());
-	for (iterator = this->_vector.begin();iterator != this->_vector.end();iterator++)
+	iterator = this->_vector.begin();
+	shortest = std::abs(*iterator - *(iterator + 1));
+	for (int i = 0; i < (int)this->_actual_size;i++)
 	{
-		for (iterator_next = this->_vector.begin();iterator_next != this->_vector.end();iterator_next++)
+		iterator_next = this->_vector.begin();
+		for (int j = 0; j < (int)this->_actual_size;j++)
 		{
 			aux = std::abs(*iterator - *iterator_next);
 			if (shortest > aux && iterator != iterator_next)
 				shortest = aux;
 		}
+		iterator++;
 	}
 	return shortest;	
 }
@@ -100,16 +122,20 @@ int Span::longestSpan(void)
 	if (this->_vector.size() < 2)
 		throw Span::StorageNotFullEnought();
 
-	longest = std::abs(this->_vector.begin() - this->_vector.end());
-	for (iterator = this->_vector.begin();iterator != this->_vector.end();iterator++)
+	iterator = this->_vector.begin();
+	longest = std::abs(*iterator - *(iterator + 1));
+	for (int i = 0; i < (int)this->_actual_size;i++)
 	{
-		for (iterator_next = this->_vector.begin();iterator_next != this->_vector.end();iterator_next++)
+		iterator_next = this->_vector.begin();
+		for (int j = 0; j < (int)this->_actual_size;j++)
 		{
 			aux = std::abs(*iterator - *iterator_next);
 			if (longest < aux)
 				longest = aux;
 		}
+		iterator++;
 	}
+
 	return longest;
 }
 
