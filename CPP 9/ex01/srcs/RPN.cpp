@@ -162,7 +162,7 @@ std::string		RPN::get_answer		(void)
     {
       aux.push_back(*it);
       // show_operation(aux);
-      // std::cout << std::endl;
+      std::cout << std::endl;
     }
     else
     {
@@ -206,7 +206,7 @@ std::string		RPN::get_answer		(void)
     }
   }
   // show_operation(aux);
-      // std::cout << std::endl;
+  // std::cout << std::endl;
   if (aux.size() > 1)
     throw RPN::ErrorRPN();
   return aux.front();
