@@ -10,12 +10,12 @@
 /*   Updated: 2022/03/03 15:58:16 by miguelangelortizdelburgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 #include <string>
 #include <iostream>
 #include <vector>
+#include <map>
 #include <sstream>
 #include <ctime>
 #include <iomanip>

@@ -144,4 +144,3 @@ void BitcoinExchange::set_date (std::string str)
     this->_date.tm_mon += 1;
   }
 }
-		

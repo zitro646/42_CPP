@@ -6,7 +6,7 @@
 /*   By: miguelangelortizdelburgo <miguelangelor    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:43:12 by miguelangel       #+#    #+#             */
-/*   Updated: 2023/03/15 11:34:13 by miguelangel      ###   ########.fr       */
+/*   Updated: 2023/03/21 20:58:16 by miguelangel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 
 #define CSV "data.csv"
 
-
-
-
-std::vector <BitcoinExchange>	read_file(std::string dir, char del, std::vector <BitcoinExchange> list)
+std::map <int , BitcoinExchange>	read_file(std::string dir, char del, std::map <int , BitcoinExchange> list)
 {
 	std::string line;
 	std::ifstream file(dir);
+	int i = 0;
 	(void)list;
 	(void)del;	
 	if (file.is_open())
@@ -30,8 +28,9 @@ std::vector <BitcoinExchange>	read_file(std::string dir, char del, std::vector <
 		{
 			while ( getline (file,line) )
 			{
-				list.push_back(BitcoinExchange(line,del));
-				//std::cout << line <<std::endl; 
+				// std::cout << line <<std::endl; 
+				list.insert(std::make_pair(i , BitcoinExchange(line,del)));
+				i++;
 			}
 		}
 		else
@@ -39,6 +38,7 @@ std::vector <BitcoinExchange>	read_file(std::string dir, char del, std::vector <
   	}
 	else 
 	 	std::cout << "Error : Unable to open file"<<std::endl;
+	// std::cout << "List size -> " << list.size() << " vs " << i <<std::endl;
 	return (list);
 }
 
@@ -57,7 +57,7 @@ bool datecomparison(std::tm date1, std::tm date2) {
     return (time1 < time2);
 }
 
-void search_value(std::vector <BitcoinExchange> csv, std::vector <BitcoinExchange> list)
+void search_value(std::map <int , BitcoinExchange> csv, std::map <int , BitcoinExchange> list)
 {
 	for (int x = 0; x < (int)list.size(); x++)
 	{
@@ -98,10 +98,10 @@ void leaks (void)
 int main (int argc, char **argv)
 {
 	atexit (leaks);
-	std::vector <BitcoinExchange>	csv;
-	std::vector <BitcoinExchange>	list;
+	std::map <int , BitcoinExchange>	csv;
+	std::map <int , BitcoinExchange>	list;
 	(void)list;
-	
+	(void)argv;
 	if (argc == 1 || argc > 2)
 		std::cout<< "Just one arg as input is mandatory" << std::endl;
     else
@@ -109,7 +109,10 @@ int main (int argc, char **argv)
         csv  = read_file(CSV, ',', csv);
 		list = read_file(argv[1], '|', list);
 	}
-	
+
+	// for (int x = 0; x != (int)list.size(); x++)
+	// 	std::cout<< list[x].get_string_date() << std::endl;
+
 	search_value(csv, list);
 	return 0;
 }

@@ -16,7 +16,7 @@
 #include <string>
 #include <iostream>
 #include <deque>
-#include <array>
+#include <forward_list>
 #include <vector>
 #include <iomanip>
 #include <sstream>
