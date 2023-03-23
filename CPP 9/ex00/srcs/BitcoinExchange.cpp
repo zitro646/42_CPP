@@ -49,24 +49,29 @@ BitcoinExchange::~BitcoinExchange( void ) {
 
 }
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - 
+//|	                  Operators	      		      		|
+// - - - - - - - - - - - - - - - - - - - - - - - - - 
 BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &tmp) {
 
   this->_origin = tmp.get_origin();
   this->_bit_value = tmp.get_bit_value();
-  // this->_date = tmp.get_date();
+  this->_date = tmp.get_date();
   this->_date.tm_year = tmp.get_date().tm_year;
   this->_date.tm_mon = tmp.get_date().tm_mon;
   this->_date.tm_mday = tmp.get_date().tm_mday;
   this->_error_detected = tmp.get_error();
   //std::cout << "Operator equalizer called" << std::endl;
   return (*this);
-  
 }
 
 std::ostream &operator<<(std::ostream& os, const BitcoinExchange &tmp) {
 
   (void) tmp;
-	os <<"Date : "<< tmp.get_string_date() << " - Value : " << tmp.get_bit_value() << " " << tmp.get_error() << std::endl;
+  if (tmp.get_error() != "")
+    os << tmp.get_error() << std::endl;
+  else
+	  os <<"Date : "<< tmp.get_string_date() << " == " << tmp.get_unix_date() << " - Value : " << tmp.get_bit_value() << std::endl;
 	return (os);
   
 }
@@ -110,7 +115,7 @@ std::string BitcoinExchange::get_string_date	(void) const
   std::string date = "";
   
   if (this->get_error() == "")
-    date = std::to_string(this->_date.tm_year) + "-" + std::to_string(this->_date.tm_mon) + "-" + std::to_string(this->_date.tm_mday);
+    date = std::to_string(this->_date.tm_year + 1900) + "-" + std::to_string(this->_date.tm_mon + 1) + "-" + std::to_string(this->_date.tm_mday);
   else
     date = "Error Date";
   return (date);
@@ -138,9 +143,12 @@ void BitcoinExchange::set_date (std::string str)
   if (ss.fail()) {
     this->_error_detected = "Error: bad date provided.";
   }
-  else
-  {
-    this->_date.tm_year += 1900;
-    this->_date.tm_mon += 1;
-  }
+}
+
+std::time_t BitcoinExchange::get_unix_date (void) const
+{
+  std::tm aux;
+
+  aux = this->_date;
+  return (std::mktime(&aux));
 }

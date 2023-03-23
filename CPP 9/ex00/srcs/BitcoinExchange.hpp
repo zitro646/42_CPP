@@ -10,6 +10,7 @@
 /*   Updated: 2022/03/03 15:58:16 by miguelangelortizdelburgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 #include <string>
@@ -19,6 +20,8 @@
 #include <sstream>
 #include <ctime>
 #include <iomanip>
+
+
 
 class	BitcoinExchange {
 
@@ -44,8 +47,10 @@ class	BitcoinExchange {
 		void set_bit_value			(std::string str);
 		void set_date				(std::string str);
 
+		std::time_t get_unix_date (void) const;
 		std::vector<std::string> split(std::string str, char c);
 };
+typedef std::map <int , BitcoinExchange>::iterator iterator;
 std::ostream &operator<<(std::ostream& os, const BitcoinExchange &tmp);
 
 #endif
