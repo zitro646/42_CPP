@@ -15,7 +15,6 @@
 #define BITCOINEXCHANGE_HPP
 #include <string>
 #include <iostream>
-#include <vector>
 #include <map>
 #include <sstream>
 #include <ctime>
@@ -43,14 +42,14 @@ class	BitcoinExchange {
 		std::tm		get_date		(void)	const 	{return(this->_date);};
 		std::string	get_error		(void)	const 	{return(this->_error_detected);};
 		std::string get_string_date	(void)	const;
+		std::time_t get_unix_date 	(void)	const;
 
 		void set_bit_value			(std::string str);
 		void set_date				(std::string str);
 
-		std::time_t get_unix_date (void) const;
-		std::vector<std::string> split(std::string str, char c);
+		int get_origin_size(std::string str, char del);
+		std::string trim(std::string str , std::string to_trim);
 };
-typedef std::map <int , BitcoinExchange>::iterator iterator;
 std::ostream &operator<<(std::ostream& os, const BitcoinExchange &tmp);
 
 #endif

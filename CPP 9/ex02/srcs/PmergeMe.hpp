@@ -11,8 +11,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PMERGEME_HPP
-#define PMERGEME_HPP
+// #ifndef PMERGEME_HPP
+// #define PMERGEME_HPP
 #include <string>
 #include <iostream>
 #include <deque>
@@ -27,33 +27,23 @@
 
 // typedef std::deque<int>::iterator iterator;
 
-template<class Container>
-class	PmergeMe {
+// template<class Container>
+// class	PmergeMe {
 
-	// typedef typename Container::iterator iterator;
-	private:
-		Container 	data;
-		double		duration;
-	public:
+// 	// typedef typename Container::iterator iterator;
+// 	private:
+// 	public:
 
-		PmergeMe 			( void );
-		PmergeMe 			( std::string str );
-		PmergeMe 			( const PmergeMe & var );
-		~PmergeMe			( void );
-		PmergeMe &operator=	( const PmergeMe &tmp );
+// 		PmergeMe 			( void );
+// 		PmergeMe 			( std::string str );
+// 		PmergeMe 			( const PmergeMe & var );
+// 		~PmergeMe			( void );
+// 		PmergeMe &operator=	( const PmergeMe &tmp );
 
-		Container 	get_data		( void ) const;
-		double		get_duration	( void ) const ;
+// 		void sort_data			( Container data );
+// };
 
-		bool check_input		( std::string str, char c );
-		int	 getIntNumber		( std::string str );
-		bool isIntNumber		( std::string str );
-		void extract_data		( std::string str, char c );
-		void get_time_stamp 	( void );
-		void sort_data			( void );
-};
+// template<typename Container>
+// std::ostream &operator<<(std::ostream& os, const PmergeMe &tmp);
 
-template<typename Container>
-std::ostream &operator<<(std::ostream& os, const PmergeMe<Container> &tmp);
-
-#endif
+// #endif

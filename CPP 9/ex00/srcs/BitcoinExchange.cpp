@@ -21,18 +21,23 @@ BitcoinExchange::BitcoinExchange( void ) :_origin("") , _bit_value(0), _error_de
 
 BitcoinExchange::BitcoinExchange( std::string str , char del) : _origin(str) , _bit_value(0), _error_detected("") 
 {
-  std::vector<std::string> data ;
-  
-  data = this->split(str, del);
-  if (data.size() != 2)
+  std::stringstream 	test(str);
+  std::string 				segment;
+
+
+  if (this->get_origin_size(str, del) != 2)
     this->_error_detected = "Error: bad input => "+ str;
   else
   {
-    this->set_date(data[0]);
-    this->set_bit_value(data[1]);
+    std::getline(test,segment,del);
+    this->set_date(this->trim(segment, " \n\r\t\f\v"));
+    std::getline(test,segment,del);
+    this->set_bit_value(this->trim(segment, " \n\r\t\f\v"));
   }
   return ; 
 }
+
+
 
 BitcoinExchange::BitcoinExchange( const BitcoinExchange & var ) {
   
@@ -56,7 +61,7 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &tmp) {
 
   this->_origin = tmp.get_origin();
   this->_bit_value = tmp.get_bit_value();
-  this->_date = tmp.get_date();
+  // this->_date = tmp.get_date();
   this->_date.tm_year = tmp.get_date().tm_year;
   this->_date.tm_mon = tmp.get_date().tm_mon;
   this->_date.tm_mday = tmp.get_date().tm_mday;
@@ -76,7 +81,7 @@ std::ostream &operator<<(std::ostream& os, const BitcoinExchange &tmp) {
   
 }
 
-std::string trim(std::string str , std::string to_trim)
+std::string BitcoinExchange::trim(std::string str , std::string to_trim)
 {
   //Trim from right
   for (int x = 0;x < (int)str.length(); x++)
@@ -97,17 +102,6 @@ std::string trim(std::string str , std::string to_trim)
 	  }  
   }
   return (str);
-}
-
-std::vector<std::string> BitcoinExchange::split(std::string str, char c)
-{
-    std::stringstream 			test(str);
-    std::string 				segment;
-    std::vector <std::string>	seglist;
-
-    while (std::getline(test,segment,c))
-    	seglist.push_back(trim(segment, " \n\r\t\f\v"));
-    return (seglist);
 }
 
 std::string BitcoinExchange::get_string_date	(void) const
@@ -138,17 +132,35 @@ void BitcoinExchange::set_bit_value (std::string str)
 void BitcoinExchange::set_date (std::string str)
 {
   std::stringstream ss(str);
+  std::memset(&this->_date, 0, sizeof(this->_date));
   ss >> std::get_time(&this->_date, "%Y-%m-%d");
 
   if (ss.fail()) {
     this->_error_detected = "Error: bad date provided.";
   }
+  // else
+  // std::time_t time_usnix = std::mktime(&this->_date);
+  // std::cout << "1 Unix time is " << time_unix << std::endl;
 }
 
 std::time_t BitcoinExchange::get_unix_date (void) const
 {
   std::tm aux;
+  std::time_t time_unix;
 
   aux = this->_date;
-  return (std::mktime(&aux));
+  time_unix = std::mktime(&aux);
+  return (time_unix);
+}
+
+int BitcoinExchange::get_origin_size(std::string str, char del)
+{
+  std::stringstream 	test(str);
+  std::string 				segment;
+  int                 x;
+
+  x = 0;
+  while (std::getline(test,segment,del))
+  	x++;
+  return (x);
 }

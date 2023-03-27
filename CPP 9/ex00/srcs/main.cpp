@@ -61,28 +61,31 @@ void search_value(std::map <int , BitcoinExchange> csv, BitcoinExchange list)
 		return ;
 	}
 		
-	// if (datecomparison(list.get_date(), csv[0].get_date()))
-	// {
-	// 	std::cout << list.get_string_date() << " => " << list.get_bit_value() << " = " <<  (csv[0].get_bit_value() * list.get_bit_value()) << std::endl;
-	// }
+	if (list.get_unix_date() < csv[0].get_unix_date())
+	{
+		std::cout << "Error: earliest date registered is "<< csv[0].get_string_date()<< std::endl;
+		return;
+	}
 
-	// if (datecomparison(csv[csv.size() - 1].get_date() , list.get_date()))
-	// {
-	// 	std::cout << list.get_string_date() << " => " << list.get_bit_value() << " = " <<  (csv[csv.size() - 1].get_bit_value() * list.get_bit_value()) << std::endl;
-	// }
+	if (csv[csv.size() - 1].get_unix_date() < list.get_unix_date())
+	{
+		std::cout << list.get_string_date() << " => " << list.get_bit_value() << " = " <<  (csv[csv.size() - 1].get_bit_value() * list.get_bit_value()) << std::endl;
+		return;
+	}
 
 	// if (csv[csv.size() - 1].get_unix_date() == list.get_unix_date())
 			// break;
-	
-	for (int x = 0;x < (int)csv.size() - 1;x++)
+
+	// std::cout << "Csv count -> "<< (int)csv.size() - 1 << std::endl;
+	for (int x = 0;x < (int)csv.size();x++)
 	{	
 		// std::cout << "Size -> "<< x << " - Csv count -> "<< (int)csv.size()  << std::endl;
-		std::cout << csv[x].get_string_date() << " <= " << list.get_string_date() << " && " << list.get_string_date() << " < " <<  csv[x + 1].get_string_date() << std::endl;
-		 std::cout << csv[x].get_unix_date() << " <= " << list.get_unix_date() << " && " << list.get_unix_date() << " < " <<  csv[x + 1].get_unix_date() << std::endl;
-		 std::cout << (csv[x].get_unix_date()  <=  list.get_unix_date()) << " && " << (list.get_unix_date() <  csv[x + 1].get_unix_date()) << std::endl;
+		// std::cout << csv[x].get_string_date() << " <= " << list.get_string_date() << " && " << list.get_string_date() << " < " <<  csv[x + 1].get_string_date() << std::endl;
+		//  std::cout << csv[x].get_unix_date() << " <= " << list.get_unix_date() << " && " << list.get_unix_date() << " < " <<  csv[x + 1].get_unix_date() << std::endl;
+		//  std::cout << (csv[x].get_unix_date()  <=  list.get_unix_date()) << " && " << (list.get_unix_date() <  csv[x + 1].get_unix_date()) << std::endl;
 		if (csv[x].get_unix_date() <= list.get_unix_date() && list.get_unix_date() < csv[x + 1].get_unix_date())
 		{
-			std::cout << csv[x].get_string_date() << " => " << list.get_bit_value() << " = " <<  (csv[x].get_bit_value()) << " * " << (list.get_bit_value()) << std::endl;
+			std::cout << csv[x].get_string_date() << " => " << list.get_bit_value() << " = " <<  (csv[x].get_bit_value() * list.get_bit_value()) << std::endl;
 			// std::cout<< "______" << std::endl;
 			break;
 		}
@@ -107,28 +110,11 @@ int main (int argc, char **argv)
     else
 	{
         csv  = read_file(CSV, ',', csv);
-		// std::cout<< "______" << std::endl;
 		list = read_file(argv[1], '|', list);
 	}
-
-	// std::cout<< "______" << std::endl;
-	// for (int x = 0; x != (int)list.size(); x++)
-	// {
-		// std::cout<< "List 1 -> " <<list[x];
-	// 	// search_value(csv, list[x]);
-	// }
-	
 	
 	for (int x = 0; x != (int)list.size(); x++)
-	{
-		// std::cout<< "List 1 -> " <<list[x];
 		search_value(csv, list[x]);
-	}
 
 	return 0;
 }
-
-
-// std::cout<< "CSV limit is -> " <<csv.size() << std::endl;
-	// std::cout<< "CSV first date is -> " <<csv[0].get_unix_date() << std::endl;
-	// std::cout<< "List first date is ->" <<list[0].get_unix_date()  << std::endl;
