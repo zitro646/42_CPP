@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 14:11:29 by mortiz-d          #+#    #+#             */
-/*   Updated: 2023/03/30 14:32:14 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:09:28 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int main (int argc, char **argv)
 				_test1 = sort_vector(_test1);
 				t2 = clock();
 				std::cout << "After :" << get_whole_vector(_test1) << std::endl;
-				std::cout << "Time to process a range of "<< _test1.size() <<" elements with std::vector :  " << (static_cast<double>(t2 - t1)) << " µs" << std::endl;
+				std::cout << "Time to process a range of "<< _test1.size() <<" elements with std::vector :  " << (static_cast<double>(t2 - t1)) << " µs - "<< (static_cast<double>(t2 - t1)/CLOCKS_PER_SEC)<< " s" << std::endl;
 				t1 = clock();
 				_test2 = sort_deque(_test2);
 				t2 = clock();
-				std::cout << "Time to process a range of "<< _test2.size() <<" elements with std::deque :  " << (static_cast<double>(t2 - t1)) << " µs" << std::endl;
+				std::cout << "Time to process a range of "<< _test2.size() <<" elements with std::deque :  " << (static_cast<double>(t2 - t1)) << " µs - "<< (static_cast<double>(t2 - t1)/CLOCKS_PER_SEC)<< " s" << std::endl;
 			}
 			else
 				std::cout << "Error duplicates numbers found" << std::endl;

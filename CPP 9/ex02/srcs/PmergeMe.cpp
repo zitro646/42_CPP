@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 14:11:46 by mortiz-d          #+#    #+#             */
-/*   Updated: 2023/03/30 14:32:31 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:58:49 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ bool check_input(std::string str, char c)
 	while (std::getline(test,segment,c))
 	{
 		if (!isIntNumber(segment))
+		{
+			std::cout <<" found "<< segment <<" as string "<< std::endl;
 			return 0;
+		}
 	}
 	return 1;
 }
