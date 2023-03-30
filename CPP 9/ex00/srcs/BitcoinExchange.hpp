@@ -1,13 +1,12 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.hpp                                       :+:      :+:    :+:   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguelangelortizdelburgo <miguelangelortizdelburgo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 15:15:25 by miguelangelortizdelburgo          #+#    #+#             */
-/*   Updated: 2022/03/03 15:58:16 by miguelangelortizdelburgo         ###   ########.fr       */
+/*   Created: 2023/03/27 20:47:05 by mortiz-d          #+#    #+#             */
+/*   Updated: 2023/03/30 13:48:40 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +26,15 @@ class	BitcoinExchange {
 	private:
 		std::string _origin;
 		std::tm 	_date;
+		std::time_t	_unix_date;
 		double		_bit_value;
 		std::string _error_detected;
+		
+		int get_origin_size(std::string str, char del);
+		void set_bit_value			(std::string str);
+		void set_date				(std::string str);
+		std::string trim(std::string str , std::string to_trim);
+	
 	public:
 
 		BitcoinExchange 			( void );
@@ -41,14 +47,8 @@ class	BitcoinExchange {
 		double 		get_bit_value	(void)	const	{return(this->_bit_value);};
 		std::tm		get_date		(void)	const 	{return(this->_date);};
 		std::string	get_error		(void)	const 	{return(this->_error_detected);};
+		std::time_t get_unix_date 	(void)	const	{return(this->_unix_date);};
 		std::string get_string_date	(void)	const;
-		std::time_t get_unix_date 	(void)	const;
-
-		void set_bit_value			(std::string str);
-		void set_date				(std::string str);
-
-		int get_origin_size(std::string str, char del);
-		std::string trim(std::string str , std::string to_trim);
 };
 std::ostream &operator<<(std::ostream& os, const BitcoinExchange &tmp);
 

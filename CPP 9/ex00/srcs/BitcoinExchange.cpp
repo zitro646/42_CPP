@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.cpp                                       :+:      :+:    :+:   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 15:15:25 by miguelangelortizdelburgo          #+#    #+#             */
-/*   Updated: 2022/12/02 16:41:42 by mortiz-d         ###   ########.fr       */
+/*   Created: 2023/03/27 20:46:59 by mortiz-d          #+#    #+#             */
+/*   Updated: 2023/03/30 13:54:49 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange( void ) :_origin("") , _bit_value(0), _error_detected("")
+BitcoinExchange::BitcoinExchange( void ) :_origin("") , _unix_date(0), _bit_value(0), _error_detected("")
 {
 
   //std::cout << "Default constructor empty called" << std::endl;
   return ;
 }
 
-BitcoinExchange::BitcoinExchange( std::string str , char del) : _origin(str) , _bit_value(0), _error_detected("") 
+BitcoinExchange::BitcoinExchange( std::string str , char del) : _origin(str) , _unix_date(0), _bit_value(0), _error_detected("") 
 {
   std::stringstream 	test(str);
   std::string 				segment;
@@ -54,25 +56,21 @@ BitcoinExchange::~BitcoinExchange( void ) {
 
 }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - 
-//|	                  Operators	      		      		|
-// - - - - - - - - - - - - - - - - - - - - - - - - - 
 BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &tmp) {
 
   this->_origin = tmp.get_origin();
   this->_bit_value = tmp.get_bit_value();
-  // this->_date = tmp.get_date();
   this->_date.tm_year = tmp.get_date().tm_year;
   this->_date.tm_mon = tmp.get_date().tm_mon;
   this->_date.tm_mday = tmp.get_date().tm_mday;
   this->_error_detected = tmp.get_error();
+  this->_unix_date = tmp.get_unix_date();
   //std::cout << "Operator equalizer called" << std::endl;
   return (*this);
 }
 
 std::ostream &operator<<(std::ostream& os, const BitcoinExchange &tmp) {
 
-  (void) tmp;
   if (tmp.get_error() != "")
     os << tmp.get_error() << std::endl;
   else
@@ -138,19 +136,13 @@ void BitcoinExchange::set_date (std::string str)
   if (ss.fail()) {
     this->_error_detected = "Error: bad date provided.";
   }
-  // else
-  // std::time_t time_usnix = std::mktime(&this->_date);
-  // std::cout << "1 Unix time is " << time_unix << std::endl;
-}
-
-std::time_t BitcoinExchange::get_unix_date (void) const
-{
-  std::tm aux;
-  std::time_t time_unix;
-
-  aux = this->_date;
-  time_unix = std::mktime(&aux);
-  return (time_unix);
+  else
+  {
+    std::time_t time_unix = std::mktime(&this->_date);
+    this->_unix_date = time_unix;
+    // std::cout << "1 Unix time is " << time_unix << std::endl; 
+  }
+  
 }
 
 int BitcoinExchange::get_origin_size(std::string str, char del)

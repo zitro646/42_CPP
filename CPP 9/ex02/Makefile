@@ -16,7 +16,7 @@ SRC_PATH    = srcs
 OBJ_PATH    = objects
 
 # SOURCES #
-SRC =  main.cpp #PmergeMe.cpp
+SRC =  main.cpp PmergeMe.cpp
 
 # RULES #
 all: $(NAME)

@@ -1,63 +1,119 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.ipp                                       :+:      :+:    :+:   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 15:15:25 by miguelangelortizdelburgo          #+#    #+#             */
-/*   Updated: 2022/12/02 16:41:42 by mortiz-d         ###   ########.fr       */
+/*   Created: 2023/03/30 14:11:46 by mortiz-d          #+#    #+#             */
+/*   Updated: 2023/03/30 14:32:31 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "PmergeMe.hpp"
 
-template<class Container>
-PmergeMe::PmergeMe( void )
+std::string get_whole_input(int argc, char **argv)
 {
+	std::string	aux;
 
-  // std::cout << "Default constructor called" << std::endl;
-  return ;
+	aux = "";
+	for (int x = 1;x != argc; x++)
+		aux += std::string(argv[x]) + " ";
+	return (aux);
 }
 
-template<class Container>
-PmergeMe::PmergeMe( std::string str )
+std::string get_whole_vector(std::vector <int> list)
 {
+	std::string	aux = "";
 
-  (void) str;
-  // std::cout << "Parameter constructor called" << std::endl;
-  return ;
-  
+	for (int x = 0; x < (int)list.size();x++)
+		aux += std::to_string(list[x]) + " ";
+	return (aux);
 }
 
-template<class Container>
-PmergeMe::PmergeMe( const PmergeMe & var ) {
-  
-  // std::cout << "Copy constructor called" << std::endl;
-  *this = var;
-  return ;
-  
+std::vector<int> extract_data	( std::string str, char c)
+{
+	std::vector<int> 	aux;
+	std::stringstream	test(str);
+	std::string			segment;
+	
+	while (std::getline(test,segment,c))
+		if (isIntNumber(segment) && segment != "")
+			aux.push_back(atoi(segment.c_str()));
+	return (aux);
 }
 
-template<class Container>
-PmergeMe::~PmergeMe( void ) {
-  
-  // std::cout << "Destructor called" << std::endl;
-  return ;
-
+bool input_on_list(std::vector<int> list, std::deque<int> list2)
+{
+	for (int x = 0; x < (int)list.size(); x++)
+	{
+		for (int y = 0; y < (int)list2.size(); y++)
+			if (list[x] == list2[y] && x != y)
+				return 0;
+	}
+	return 1;
 }
 
-template<class Container>
-PmergeMe & PmergeMe::operator=(const PmergeMe<Container> &tmp) {
-  (void)tmp;
-  // std::cout << "Operator equalizer called" << std::endl;
-  return (*this);
-  
+bool isIntNumber(std::string str)
+{
+	char * e;
+	double		x;
+	
+	x = strtod(str.c_str(),&e);
+	if (*e != '\0')
+		return 0;
+	if ( x < std::numeric_limits<int>::lowest() || \
+	x > std::numeric_limits<int>::max())
+  		return 0;
+	if (fmod(x, 1.0) != 0)
+        return 0;
+	return 1;
 }
 
-template<class Container>
-std::ostream &operator<<(std::ostream& os, const PmergeMe &tmp) {
+bool check_input(std::string str, char c)
+{
+	std::stringstream 		test(str);
+	std::string				segment;
 
-	(void)tmp;
-	return (os);
+	while (std::getline(test,segment,c))
+	{
+		if (!isIntNumber(segment))
+			return 0;
+	}
+	return 1;
+}
+
+std::vector<int> sort_vector( std::vector<int> list )
+{
+	int		aux;
+	
+	for (int x = 0;x < (int)list.size() - 1; x++)
+	{
+		if (list[x] > list[x + 1])
+		{
+			aux = list[x];
+			list[x] = list[x + 1];
+			list[x + 1] = aux;
+			x = -1;
+		}
+	}
+	return (list);
+}
+
+std::deque<int> sort_deque( std::deque<int> list )
+{
+	int		aux;
+	
+	for (int x = 0;x < (int)list.size() - 1; x++)
+	{
+		if (list[x] > list[x + 1])
+		{
+			aux = list[x];
+			list[x] = list[x + 1];
+			list[x + 1] = aux;
+			x = -1;
+		}
+	}
+	return (list);
 }

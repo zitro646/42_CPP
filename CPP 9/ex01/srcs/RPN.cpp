@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.cpp                                       :+:      :+:    :+:   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 15:15:25 by miguelangelortizdelburgo          #+#    #+#             */
-/*   Updated: 2022/12/02 16:41:42 by mortiz-d         ###   ########.fr       */
+/*   Created: 2023/03/30 14:12:47 by mortiz-d          #+#    #+#             */
+/*   Updated: 2023/03/30 14:12:49 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "RPN.hpp"
 
@@ -132,7 +133,6 @@ void show_operation(std::list <std::string> aux)
 
 int getIntNumber(std::string str)
 {
-  // std::cout << "Nº given " << str << std::endl;
 	return ( atoi(str.c_str()));
 }
 
@@ -159,11 +159,7 @@ std::string		RPN::get_answer		(void)
   for (iterator it = this->list.begin(); it != this->list.end(); ++it)
   {
     if (isIntNumber(*it))
-    {
       aux.push_back(*it);
-      // show_operation(aux);
-      std::cout << std::endl;
-    }
     else
     {
       if (aux.size() <= 1)
@@ -177,26 +173,20 @@ std::string		RPN::get_answer		(void)
       x = getIntNumber(*it_aux);
       aux.pop_back();
       
-      // std::cout << "Operator type " << getOperator(*it) << std::endl;
-      // std::cout << " x = " << x  << " | y = "<< " "<< y;
       switch (getOperator(*it))
       {
         case 0:
-          // std::cout << " + "  << std::endl;
           aux.push_back(std::to_string(x + y));
           break;
         case 1:
-        // std::cout << " - "  << std::endl;
           aux.push_back(std::to_string(x - y));
           break;
         case 2:
-        // std::cout << " * " << (x * y) << std::endl;
           aux.push_back(std::to_string(x * y));
           break;
         case 3:
           if (y == 0)
             throw RPN::ErrorRPN();
-          // std::cout << " Div " << (x / y) << std::endl;
           aux.push_back(std::to_string(x / y));
           break;
         default:
@@ -205,8 +195,6 @@ std::string		RPN::get_answer		(void)
       }
     }
   }
-  // show_operation(aux);
-  // std::cout << std::endl;
   if (aux.size() > 1)
     throw RPN::ErrorRPN();
   return aux.front();

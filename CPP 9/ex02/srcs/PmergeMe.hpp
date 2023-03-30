@@ -1,18 +1,15 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguelangelortizdelburgo <miguelangelortizdelburgo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 15:15:25 by miguelangelortizdelburgo          #+#    #+#             */
-/*   Updated: 2022/03/03 15:58:16 by miguelangelortizdelburgo         ###   ########.fr       */
+/*   Created: 2023/03/30 14:11:37 by mortiz-d          #+#    #+#             */
+/*   Updated: 2023/03/30 14:34:38 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #ifndef PMERGEME_HPP
-// #define PMERGEME_HPP
 #include <string>
 #include <iostream>
 #include <deque>
@@ -25,25 +22,18 @@
 #include <chrono>
 #include <ctime>
 
-// typedef std::deque<int>::iterator iterator;
+//Check strings of vectors
+std::string 		get_whole_vector	( std::vector <int> list );
+std::string 		get_whole_input		(  int argc, char **argv );
 
-// template<class Container>
-// class	PmergeMe {
+//Check data integrity
+bool 				input_on_list		( std::vector<int> list, std::deque<int> list2 );
+bool 				check_input			( std::string str, char c );
+bool 				isIntNumber			( std::string str );
 
-// 	// typedef typename Container::iterator iterator;
-// 	private:
-// 	public:
+//Extract data
+std::vector<int> 	extract_data		( std::string str, char c);
 
-// 		PmergeMe 			( void );
-// 		PmergeMe 			( std::string str );
-// 		PmergeMe 			( const PmergeMe & var );
-// 		~PmergeMe			( void );
-// 		PmergeMe &operator=	( const PmergeMe &tmp );
-
-// 		void sort_data			( Container data );
-// };
-
-// template<typename Container>
-// std::ostream &operator<<(std::ostream& os, const PmergeMe &tmp);
-
-// #endif
+//Sorting
+std::deque<int>		sort_deque			( std::deque <int> list );
+std::vector<int> 	sort_vector			( std::vector <int> list );

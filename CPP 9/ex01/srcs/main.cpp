@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguelangelortizdelburgo <miguelangelor    +#+  +:+       +#+        */
+/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/15 17:48:27 by miguelangel       #+#    #+#             */
-/*   Updated: 2023/03/15 23:30:23 by miguelangel      ###   ########.fr       */
+/*   Created: 2023/03/30 14:12:36 by mortiz-d          #+#    #+#             */
+/*   Updated: 2023/03/30 14:12:39 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int main (int argc, char **argv)
 {
 	RPN *rpn = new RPN();
-	(void)argc;
-    if (argc > 1)
+	
+    if (argc == 2)
     {
 		rpn->fillRPN(argv[1], ' ');
         try
@@ -29,9 +29,7 @@ int main (int argc, char **argv)
 		}
 		
     }
-    
-	// std::cout<< "input is mandatory : "<< (std::string)(argv) << std::endl;
-    
-	
+	else
+    	std::cout<< "Error" << std::endl;
 	return 0;
 }
