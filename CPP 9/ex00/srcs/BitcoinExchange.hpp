@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguelangelortizdelburgo <miguelangelor    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:47:05 by mortiz-d          #+#    #+#             */
-/*   Updated: 2023/03/30 13:48:40 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:22:07 by miguelangel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ class	BitcoinExchange {
 		double		_bit_value;
 		std::string _error_detected;
 		
-		int get_origin_size(std::string str, char del);
-		void set_bit_value			(std::string str);
+		int get_origin_size			(std::string str, char del);
+		void set_bit_value			(std::string str, int  arch_type);
 		void set_date				(std::string str);
-		std::string trim(std::string str , std::string to_trim);
+		std::string trim			(std::string str , std::string to_trim);
 	
 	public:
 
 		BitcoinExchange 			( void );
-		BitcoinExchange 			( std::string str , char del );
+		BitcoinExchange 			( std::string str , char del , int arch_type );
 		BitcoinExchange 			( const BitcoinExchange & var );
 		~BitcoinExchange			( void );
 		BitcoinExchange &operator=	(const BitcoinExchange &tmp);

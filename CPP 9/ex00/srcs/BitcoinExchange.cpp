@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguelangelortizdelburgo <miguelangelor    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:46:59 by mortiz-d          #+#    #+#             */
-/*   Updated: 2023/03/30 13:54:49 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:44:54 by miguelangel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ BitcoinExchange::BitcoinExchange( void ) :_origin("") , _unix_date(0), _bit_valu
   return ;
 }
 
-BitcoinExchange::BitcoinExchange( std::string str , char del) : _origin(str) , _unix_date(0), _bit_value(0), _error_detected("") 
+BitcoinExchange::BitcoinExchange( std::string str , char del, int arch_type) : _origin(str) , _unix_date(0), _bit_value(0), _error_detected("") 
 {
-  std::stringstream 	test(str);
-  std::string 				segment;
+	(void)arch_type;
+	std::stringstream 	test(str);
+	std::string 				segment;
 
-
-  if (this->get_origin_size(str, del) != 2)
-    this->_error_detected = "Error: bad input => "+ str;
-  else
-  {
-    std::getline(test,segment,del);
-    this->set_date(this->trim(segment, " \n\r\t\f\v"));
-    std::getline(test,segment,del);
-    this->set_bit_value(this->trim(segment, " \n\r\t\f\v"));
-  }
-  return ; 
+	if (this->get_origin_size(str, del) != 2)
+		this->_error_detected = "Error: bad input => "+ str;
+	else
+  	{
+    	std::getline(test,segment,del);
+    	this->set_date(this->trim(segment, " \n\r\t\f\v"));
+    	std::getline(test,segment,del);
+    	this->set_bit_value(this->trim(segment, " \n\r\t\f\v"), arch_type);
+	}
+	return ; 
 }
 
 
@@ -113,29 +113,28 @@ std::string BitcoinExchange::get_string_date	(void) const
   return (date);
 };
 
-void BitcoinExchange::set_bit_value (std::string str)
+void BitcoinExchange::set_bit_value (std::string str , int  arch_type)
 {
 	char * e;
   
-  this->_bit_value = strtod(str.c_str(),&e);
-	if ( this->_bit_value < std::numeric_limits<int>::lowest() || \
-    this->_bit_value > std::numeric_limits<int>::max())
-  
-    this->_error_detected = "Error: too large a number.";
-  
-  if (this->_bit_value < 0 && this->_error_detected == "")
-    this->_error_detected = "Error: not a positive number.";
+	this->_bit_value = strtod(str.c_str(),&e);
+	// if ( this->_bit_value < std::numeric_limits<int>::lowest() ||	this->_bit_value > std::numeric_limits<int>::max())
+    if ( arch_type == 1 && (this->_bit_value < 0))	
+		this->_error_detected = "Error: not a positive number.";
+	if ( arch_type == 1 && (this->_bit_value > 1000))	
+		this->_error_detected = "Error: too large a number.";
+	if ( this->_bit_value < 0 && this->_error_detected == "" )
+		this->_error_detected = "Error: not a positive number.";
 }
 
 void BitcoinExchange::set_date (std::string str)
 {
   std::stringstream ss(str);
+
   std::memset(&this->_date, 0, sizeof(this->_date));
   ss >> std::get_time(&this->_date, "%Y-%m-%d");
-
-  if (ss.fail()) {
+  if (ss.fail())
     this->_error_detected = "Error: bad date provided.";
-  }
   else
   {
     std::time_t time_unix = std::mktime(&this->_date);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguelangelortizdelburgo <miguelangelor    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 14:11:37 by mortiz-d          #+#    #+#             */
-/*   Updated: 2023/03/30 14:34:38 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2023/04/10 22:11:06 by miguelangel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,54 @@
 #include <chrono>
 #include <ctime>
 
-//Check strings of vectors
-std::string 		get_whole_vector	( std::vector <int> list );
-std::string 		get_whole_input		(  int argc, char **argv );
+//Check strings
+std::string 		get_input		(  int argc, char **argv );
 
 //Check data integrity
 bool 				input_on_list		( std::vector<int> list, std::deque<int> list2 );
 bool 				check_input			( std::string str, char c );
 bool 				isIntNumber			( std::string str );
 
-//Extract data
-std::vector<int> 	extract_data		( std::string str, char c);
+//show list
+template<typename T>
+std::string show_array	( T list )
+{
+	std::string	aux = "";
 
-//Sorting
-std::deque<int>		sort_deque			( std::deque <int> list );
-std::vector<int> 	sort_vector			( std::vector <int> list );
+	for (int x = 0; x < (int)list.size();x++)
+		aux += std::to_string(list[x]) + " ";
+	return (aux);
+}
+
+//Template to extract data
+template<typename L>
+L extract_data	( std::string str, char c)
+{
+	L                   aux;
+	std::stringstream	test(str);
+	std::string			segment;
+	
+	while (std::getline(test,segment,c))
+		if (isIntNumber(segment) && segment != "")
+			aux.push_back(atoi(segment.c_str()));
+	return (aux);
+}
+
+//Template to sort
+template<typename T>
+T sort(T list)
+{	
+	int		aux;
+	
+	for (int x = 0;x < (int)list.size() - 1; x++)
+	{
+		if (list[x] > list[x + 1])
+		{
+			aux = list[x];
+			list[x] = list[x + 1];
+			list[x + 1] = aux;
+			x = -1;
+		}
+	}
+	return (list);	
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguelangelortizdelburgo <miguelangelor    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:46:55 by mortiz-d          #+#    #+#             */
-/*   Updated: 2023/03/30 13:54:41 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:17:48 by miguelangel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #define CSV "data.csv"
 
-std::map <int , BitcoinExchange>	read_file(std::string dir, char del, std::map <int , BitcoinExchange> list)
+std::map <int , BitcoinExchange>	read_file(std::string dir, char del, std::map <int , BitcoinExchange> list, int arch_type)
 {
 	std::string line;
 	std::ifstream file(dir);
@@ -27,7 +27,7 @@ std::map <int , BitcoinExchange>	read_file(std::string dir, char del, std::map <
 		{
 			while ( getline (file,line) )
 			{
-				list.insert(std::make_pair(i , BitcoinExchange(line,del)));
+				list.insert(std::make_pair(i , BitcoinExchange(line, del, arch_type)));
 				i++;
 			}
 		}
@@ -79,8 +79,8 @@ int main (int argc, char **argv)
 		std::cout<< "Just one arg as input is mandatory" << std::endl;
     else
 	{
-        csv  = read_file(CSV, ',', csv);
-		list = read_file(argv[1], '|', list);
+        csv  = read_file(CSV, ',', csv, 0);
+		list = read_file(argv[1], '|', list, 1);
 		for (int x = 0; x != (int)list.size(); x++)
 			search_value(csv, list[x]);
 	}
